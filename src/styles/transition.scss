@@ -1,0 +1,32 @@
+// global transition css
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.v-leave-from,
+.v-enter-to {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+/* breadcrumb transition */
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+
+.breadcrumb-enter,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.breadcrumb-move {
+  transition: all 0.5s;
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+}
