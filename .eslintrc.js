@@ -18,6 +18,7 @@ module.exports = {
   // eslint:recommended:表示引入eslint的核心功能，并且报告一些常见的共同错误。
   extends: ['plugin:vue/recommended', 'eslint:recommended'],
   rules: {
+    'vue/html-self-closing': 0,
     // 设置每行最大属性数
     'vue/max-attributes-per-line': [
       2,
@@ -344,7 +345,14 @@ module.exports = {
     // 代码块前至少有一个空格
     'space-before-blocks': [2, 'always'],
     // 函数名称或 function 关键字与开头括号之间不允许有空格
-    'space-before-function-paren': [2, 'never'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
     // 禁止在括号内使用空格
     'space-in-parens': [2, 'never'],
     // 中缀运算符周围需有空格

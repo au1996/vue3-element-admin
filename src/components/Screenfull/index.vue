@@ -7,7 +7,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { ElMessage } from 'element-plus'
-import screenfull, { Screenfull } from 'screenfull'
+import screenfull from 'screenfull'
 export default defineComponent({
   name: 'Screenfull',
   data() {

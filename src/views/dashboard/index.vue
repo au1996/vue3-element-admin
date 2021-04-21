@@ -9,9 +9,11 @@
 import { ref, reactive } from 'vue'
 
 const msg = ref(666)
+
 const h2Style = reactive({
   color: '#435448'
 })
+
 setInterval(() => {
   msg.value = Math.random()
   h2Style.color = '#' + Math.random().toString(16).slice(-6)

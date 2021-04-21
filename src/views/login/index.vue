@@ -2,22 +2,16 @@
   <div class="login-wrap">
     <div class="login-content">
       <div class="login-title">系统登录</div>
-      <el-form ref="loginRef" class="login-form" :model="param" :rules="rules" status-icon>
+      <el-form ref="loginFormRef" class="login-form" :model="param" :rules="rules" status-icon>
         <el-form-item prop="username">
-          <el-input v-model="param.username" clearable placeholder="用户名">
+          <el-input v-model="param.username" placeholder="用户名">
             <template #prepend>
               <i class="el-icon-s-custom" />
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input
-            v-model="param.password"
-            clearable
-            placeholder="密码"
-            type="password"
-            @keyup.enter.native="submitForm"
-          >
+          <el-input v-model="param.password" placeholder="密码" type="password" @keyup.enter.native="submitForm">
             <template #prepend>
               <i class="el-icon-lock" />
             </template>
@@ -43,7 +37,7 @@ import { login } from '@/api/user'
 const router = useRouter()
 
 const btnLoading = ref(false)
-const loginRef = ref(null)
+const loginFormRef = ref(null)
 
 const param = reactive({
   username: '',
@@ -55,8 +49,8 @@ const rules = reactive({
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 
-const submitForm = async() => {
-  loginRef.value.validate((valid) => {
+const submitForm = async () => {
+  loginFormRef.value.validate((valid) => {
     if (valid) {
       btnLoading.value = true
       // 访问登录接口

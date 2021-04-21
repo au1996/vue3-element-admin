@@ -8,7 +8,7 @@
       </el-tooltip>
       <el-dropdown class="avatar-container right-menu-item" trigger="hover">
         <div class="avatar-wrapper">
-          <img src="http://www.xueyueob.cn/icons/favicon.ico" class="user-avatar">
+          <img src="http://www.xueyueob.cn/icons/favicon.ico" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <template #dropdown>
@@ -51,15 +51,9 @@ export default defineComponent({
   computed: {
     sidebar() {
       return this.$store.state.app.sidebar
-    },
-    name() {
-      return localStorage.name
     }
   },
   methods: {
-    close() {
-      this.status = false
-    },
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },

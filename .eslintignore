@@ -9,6 +9,8 @@ node_modules
 dist
 /public
 /docs
+/tests
+/__tests__
 .husky
 .local
 /bin

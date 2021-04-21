@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-container">
     <div class="logo" @click="$router.push('/')">
-      <img class="logoImg" :src="logoSrc" alt="logo">
+      <img class="logoImg" :src="logoSrc" alt="logo" />
       <transition name="el-zoom-in-center">
         <h1 v-show="sidebar.opened" class="logoText">Vue Element Admin</h1>
       </transition>
@@ -17,7 +17,7 @@
         background-color="#4a5a74"
         active-text-color="#409EFF"
       >
-        <sidebar-item v-for="item in routers" :key="item.path" :index="item.path" :item="item" />
+        <SidebarItem v-for="item in routers" :key="item.path" :index="item.path" :item="item" />
       </el-menu>
     </el-scrollbar>
   </div>

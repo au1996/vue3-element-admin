@@ -64,7 +64,7 @@ npm run lint:css
 
 [在线 Demo](http://admin.xueyueob.cn)
 
-[TypeScript 版本传送门](https://github.com/au1996/vue3-element-admin-ts)
+[ts版本传送门](https://github.com/au1996/vue3-element-admin-ts)
 
 ## License
 
