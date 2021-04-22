@@ -10,6 +10,9 @@ const tagAndTagSpacing = 4
 
 export default defineComponent({
   name: 'ScrollPane',
+  emits: {
+    scroll: null
+  },
   data() {
     return {
       left: 0

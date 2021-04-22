@@ -12,7 +12,7 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <template #dropdown>
-          <el-dropdown-menu slot="dropdown" placement="top">
+          <el-dropdown-menu>
             <router-link to="/">
               <el-dropdown-item>首页</el-dropdown-item>
             </router-link>
