@@ -7,7 +7,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig(({ command }) => {
   const prodMock = true
   return {
-    base: '/', // 开发或生产环境服务的 公共基础路径。
+    base: '/', // 开发或生产环境服务的公共基础路径。
     plugins: [
       vue(),
       viteMockServe({

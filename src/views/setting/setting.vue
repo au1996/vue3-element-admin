@@ -1,11 +1,10 @@
 <template>
-  <el-table :data="list" border style="width: 100%;">
+  <el-table :data="list" border>
     <el-table-column prop="username" label="用户名" />
     <el-table-column prop="password" label="密码" />
     <el-table-column prop="role" label="权限" />
     <el-table-column label="操作" width="200">
       <template #default="{ row }">
-        <el-button type="text" size="small" @click="editUser(row)">编辑</el-button>
         <el-button type="text" size="small" @click="deleteUser(row.username)">删除</el-button>
       </template>
     </el-table-column>
@@ -14,18 +13,14 @@
 
 <script setup>
 import { reactive } from 'vue'
-import { getUserList } from '@/api/user'
+import { get_user_list } from '@/api/user'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 const list = reactive([])
 
-getUserList().then((res) => {
+get_user_list().then((res) => {
   list.push(...res.list)
 })
-
-const editUser = (row) => {
-  ElMessage(row.username)
-}
 
 const deleteUser = (name) => {
   ElMessageBox.confirm(`确定删除 ${name} ？`, '提示', {

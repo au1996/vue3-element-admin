@@ -4,7 +4,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-export default defineComponent({
+defineComponent({
   name: 'App'
 })
 </script>
