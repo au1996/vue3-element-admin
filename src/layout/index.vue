@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { defineComponent, ref, computed, watch, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import Sidebar from './components/Sidebar/index.vue'
@@ -24,19 +24,8 @@ import Navbar from './components/Navbar.vue'
 import TagsView from './components/TagsView/index.vue'
 import AppMain from './components/AppMain.vue'
 
-defineComponent({
-  name: 'Layout',
-  components: {
-    AppMain,
-    Navbar,
-    Sidebar,
-    TagsView
-  }
-})
-
 const route = useRoute()
 const store = useStore()
-const mobileWidth = ref(992)
 
 const opened = computed(() => store.state.app.sidebar.opened)
 const withoutAnimation = computed(() => store.state.app.sidebar.withoutAnimation)
@@ -75,6 +64,8 @@ onBeforeUnmount(() => {
 const handleClickOutside = () => {
   store.dispatch('app/closeSideBar', { withoutAnimation: false })
 }
+
+const mobileWidth = ref(992)
 
 const isMobile = () => {
   const rect = document.body.getBoundingClientRect()

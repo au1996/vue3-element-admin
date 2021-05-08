@@ -1,6 +1,6 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
-    <Hamburger class="hamburger-container" :is-active="sidebar.opened" @toggleClick="toggleSideBar" />
+    <Hamburger class="hamburger-container" :is-active="opened" @toggleClick="toggleSideBar" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <el-tooltip effect="dark" content="全屏" placement="bottom">
@@ -17,10 +17,10 @@
               <el-dropdown-item>首页</el-dropdown-item>
             </router-link>
             <el-dropdown-item divided>
-              <span style="display: block;" @click="editPossword">修改密码</span>
+              <div @click="editPossword">修改密码</div>
             </el-dropdown-item>
             <el-dropdown-item divided>
-              <span style="display: block;" @click="loginOut">登出</span>
+              <div @click="loginOut">登出</div>
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -29,55 +29,42 @@
   </el-menu>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
 import { removeToken, removeRoles } from '@/utils/auth'
 
-export default defineComponent({
-  components: {
-    Breadcrumb,
-    Hamburger,
-    Screenfull
-  },
-  data() {
-    return {
-      status: false
-    }
-  },
-  computed: {
-    sidebar() {
-      return this.$store.state.app.sidebar
-    }
-  },
-  methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
-    },
-    editPossword() {
-      ElMessage.warning('暂不支持修改密码')
-    },
-    loginOut() {
-      ElMessageBox.confirm('退出登录', '提示', {
-        confirmButtonText: '确认',
-        cancelButtonText: '取消',
-        cancelButtonClass: 'cancelBtn',
-        type: 'warning'
+const store = useStore()
+const opened = computed(() => store.state.app.sidebar.opened)
+
+const toggleSideBar = () => {
+  store.dispatch('app/toggleSideBar')
+}
+
+const editPossword = () => {
+  ElMessage.warning('暂不支持修改密码')
+}
+
+const loginOut = () => {
+  ElMessageBox.confirm('退出登录', '提示', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    cancelButtonClass: 'cancelBtn',
+    type: 'warning'
+  })
+    .then(() => {
+      removeToken()
+      removeRoles()
+      this.$store.dispatch('tagsView/delAllViews').then(() => {
+        this.$router.push('/login')
       })
-        .then(() => {
-          removeToken()
-          removeRoles()
-          this.$store.dispatch('tagsView/delAllViews').then(() => {
-            this.$router.push('/login')
-          })
-        })
-        .catch(() => {})
-    }
-  }
-})
+    })
+    .catch(() => {})
+}
 </script>
 
 <style lang="scss" scoped>

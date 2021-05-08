@@ -39,28 +39,17 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'SidebarItem',
-  props: {
-    item: {
-      type: Object,
-      required: true
-    },
-    isNest: {
-      type: Boolean,
-      default: false
-    },
-    basePath: {
-      type: String,
-      default: ''
-    }
+<script setup>
+import { defineProps } from 'vue'
+
+defineProps({
+  item: {
+    type: Object,
+    required: true
   },
-  computed: {
-    opened() {
-      return this.$store.state.app.sidebar.opened
-    }
+  isNest: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
