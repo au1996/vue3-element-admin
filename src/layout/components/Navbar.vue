@@ -31,6 +31,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import Hamburger from '@/components/Hamburger/index.vue'
@@ -38,6 +39,7 @@ import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
 import { removeToken, removeRoles } from '@/utils/auth'
 
+const router = useRouter()
 const store = useStore()
 const opened = computed(() => store.state.app.sidebar.opened)
 
@@ -53,14 +55,13 @@ const loginOut = () => {
   ElMessageBox.confirm('退出登录', '提示', {
     confirmButtonText: '确认',
     cancelButtonText: '取消',
-    cancelButtonClass: 'cancelBtn',
     type: 'warning'
   })
     .then(() => {
       removeToken()
       removeRoles()
-      this.$store.dispatch('tagsView/delAllViews').then(() => {
-        this.$router.push('/login')
+      store.dispatch('tagsView/delAllViews').finally(() => {
+        router.push('/login')
       })
     })
     .catch(() => {})

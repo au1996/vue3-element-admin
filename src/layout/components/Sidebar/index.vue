@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar-container">
     <div class="logo" @click="$router.push('/')">
-      <img class="logoImg" :src="logoSrc" alt="logo" />
+      <img class="logo-img" :src="logoSrc" alt="logo" />
       <transition name="el-zoom-in-center">
-        <h1 v-show="opened" class="logoText">Vue Element Admin</h1>
+        <h1 v-show="opened" class="logo-text">Vue Element Admin</h1>
       </transition>
     </div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
@@ -88,12 +88,12 @@ const filterRoutes = () => {
   justify-content: center;
   align-items: center;
 
-  .logoImg {
+  .logo-img {
     width: 32px;
     height: 32px;
   }
 
-  .logoText {
+  .logo-text {
     display: inline-block;
     height: 50px;
     margin-left: 12px;

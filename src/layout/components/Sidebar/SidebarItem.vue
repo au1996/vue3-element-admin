@@ -39,17 +39,19 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
+<script>
+import { defineComponent } from 'vue'
 
-defineProps({
-  item: {
-    type: Object,
-    required: true
-  },
-  isNest: {
-    type: Boolean,
-    default: false
+export default defineComponent({
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    isNest: {
+      type: Boolean,
+      default: false
+    }
   }
 })
 </script>

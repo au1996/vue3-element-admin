@@ -1,4 +1,13 @@
-import { validUsername, validURL, validLowerCase, validUpperCase, validAlphabets } from '@/utils/validate.js'
+import {
+  validUsername,
+  validURL,
+  validLowerCase,
+  validUpperCase,
+  validAlphabets,
+  validEmail,
+  isString,
+  isArray
+} from '@/utils/validate.js'
 
 describe('Utils:validate', () => {
   it('validUsername', () => {
@@ -25,5 +34,20 @@ describe('Utils:validate', () => {
     expect(validAlphabets('ABC')).toBe(true)
     expect(validAlphabets('Abc')).toBe(true)
     expect(validAlphabets('123aBC')).toBe(false)
+  })
+  it('validEmail', () => {
+    expect(validEmail('123@qq.xom')).toBe(true)
+    expect(validEmail('123@163.com')).toBe(true)
+    expect(validEmail('123.cn')).toBe(false)
+  })
+  it('isString', () => {
+    expect(isString('str')).toBe(true)
+    expect(isString('string123')).toBe(true)
+    expect(isString(123)).toBe(false)
+  })
+  it('isArray', () => {
+    expect(isArray([1, 2, 3])).toBe(true)
+    expect(isArray([])).toBe(true)
+    expect(isArray(null)).toBe(false)
   })
 })
