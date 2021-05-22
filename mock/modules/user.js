@@ -1,7 +1,12 @@
 const userList = [
-  { username: 'admin', password: '123', role: 'admin' },
-  { username: 'editor', password: '456', role: 'editor' },
-  { username: 'xueyue', password: '123456', role: 'admin' }
+  { username: 'admin', password: '123', role: 'admin', email: 'admin@qq.com' },
+  { username: 'editor', password: '456', role: 'editor', email: 'editor@qq.com' },
+  { username: 'xueyue', password: '123456', role: 'admin', email: 'xueyue@qq.com' }
+]
+
+const roleList = [
+  { name: 'admin', description: '管理员', level: 0 },
+  { name: 'editor', description: '编辑人员', level: 1 }
 ]
 
 export default [
@@ -21,28 +26,49 @@ export default [
       })
       if (flag) {
         return {
-          code: 200,
+          code: 20000,
           message: '登录成功',
           role,
           token: new Date().getTime().toString(32)
         }
       } else {
         return {
-          code: 400,
+          code: 40000,
           message: '用户名或密码错误'
         }
       }
     }
   },
   {
-    url: '/api/user-list',
+    url: '/api/logout',
     method: 'get',
-    timeout: 100,
-    statusCode: 200,
     response: ({ query }) => {
+      return {
+        code: 20000,
+        message: 'success',
+        data: query
+      }
+    }
+  },
+  {
+    url: '/api/users',
+    method: 'get',
+    response: () => {
       const list = userList
       return {
-        code: 200,
+        code: 20000,
+        message: 'success',
+        list
+      }
+    }
+  },
+  {
+    url: '/api/roles',
+    method: 'get',
+    response: () => {
+      const list = roleList
+      return {
+        code: 20000,
         message: 'success',
         list
       }

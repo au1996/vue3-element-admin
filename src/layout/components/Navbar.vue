@@ -38,6 +38,7 @@ import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
 import { removeToken, removeRoles } from '@/utils/auth'
+import { user_logout } from '@/api/user'
 
 const router = useRouter()
 const store = useStore()
@@ -58,10 +59,12 @@ const loginOut = () => {
     type: 'warning'
   })
     .then(() => {
-      removeToken()
-      removeRoles()
-      store.dispatch('tagsView/delAllViews').finally(() => {
-        router.push('/login')
+      user_logout().then(() => {
+        removeToken()
+        removeRoles()
+        store.dispatch('tagsView/delAllViews').finally(() => {
+          router.push('/login')
+        })
       })
     })
     .catch(() => {})

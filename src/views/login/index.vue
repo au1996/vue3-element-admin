@@ -32,7 +32,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { setToken, setRoles } from '@/utils/auth'
-import { login } from '@/api/user'
+import { user_login } from '@/api/user'
 
 const router = useRouter()
 
@@ -54,9 +54,9 @@ const submitForm = async () => {
     if (valid) {
       btnLoading.value = true
       // 访问登录接口
-      login(param)
+      user_login(param)
         .then((res) => {
-          if (res.code === 200) {
+          if (res.token) {
             // 登录成功后；保存用户信息以及token
             ElMessage.success(res.message)
             setToken(res.token)

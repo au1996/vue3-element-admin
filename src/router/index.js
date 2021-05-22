@@ -35,7 +35,7 @@ export const constantRoutes = [
       },
       {
         path: '/setting',
-        component: () => import('@/views/setting/setting.vue'),
+        component: () => import('@/views/setting/index.vue'),
         name: 'setting',
         meta: { title: '设置', icon: 'el-icon-s-tools', roles: ['admin'] }
       },
@@ -76,10 +76,10 @@ export const constantRoutes = [
         ]
       },
       {
-        path: '/user',
-        component: () => import('@/views/user/user.vue'),
-        name: 'user',
-        meta: { title: '用户', icon: 'el-icon-user-solid', roles: ['admin', 'editor'] }
+        path: '/star',
+        component: () => import('@/views/star/index.vue'),
+        name: 'star',
+        meta: { title: '雪月', icon: 'el-icon-star-on', roles: ['admin', 'editor'] }
       }
     ]
   }
