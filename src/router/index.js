@@ -25,12 +25,12 @@ export const constantRoutes = [
   {
     path: '/',
     component: () => import('@/layout/index.vue'),
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [
       {
-        path: '/dashboard',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'dashboard',
+        path: '/home',
+        component: () => import('@/views/home/index.vue'),
+        name: 'home',
         meta: { title: '首页', icon: 'el-icon-s-home', affix: true }
       },
       {

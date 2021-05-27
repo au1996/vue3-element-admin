@@ -1,7 +1,9 @@
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import router from '../router'
 import { getToken, removeToken, removeRoles } from './auth'
+
+const router = useRouter()
 
 const service = axios.create({
   // baseURL: import.meta.env.VITE_BASE_API,

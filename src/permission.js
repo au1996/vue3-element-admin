@@ -13,12 +13,12 @@ router.beforeEach(async (to, from, next) => {
   console.log('beforeEach: from', from)
   // start progress bar
   start()
-  // set page title
-  document.title = getPageTitle(to.meta.title)
 
   // determine whether the user has logged in
   const hasToken = getToken()
   if (hasToken) {
+    // set page title
+    document.title = getPageTitle(to.meta.title)
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
       next({ path: '/' })

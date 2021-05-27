@@ -28,13 +28,13 @@ export default defineConfig(({ command }) => {
       }
     },
     server: {
-      port: 7001,
+      port: 3001,
       open: false,
       proxy: {
         '/api': {
           target: 'http://admin.xueyueob.cn/api',
           changeOrigin: true,
-          // ws: true,
+          ws: true,
           rewrite: (path) => path.replace(new RegExp('^/api'), '')
         }
       }

@@ -34,7 +34,7 @@ export default defineComponent({
       const first = matched[0]
 
       if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: '首页' }}].concat(matched)
+        matched = [{ path: '/home', meta: { title: '首页' }}].concat(matched)
       }
 
       this.levelList = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
@@ -44,7 +44,7 @@ export default defineComponent({
       if (!name) {
         return false
       }
-      return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
+      return name.trim().toLocaleLowerCase() === 'Home'.toLocaleLowerCase()
     }
   }
 })

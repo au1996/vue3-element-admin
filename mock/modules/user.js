@@ -53,6 +53,7 @@ export default [
   {
     url: '/api/users',
     method: 'get',
+    timeout: 500,
     response: () => {
       const list = userList
       return {

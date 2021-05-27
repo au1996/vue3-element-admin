@@ -1,9 +1,14 @@
 <template>
-  <router-view v-slot="{ Component }">
-    <component :is="Component" />
-  </router-view>
+  <div>
+    <h1>{{ title }}</h1>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </div>
 </template>
 
-<script></script>
+<script setup>
+import { ref } from 'vue'
 
-<style lang="scss" scoped></style>
+const title = ref('菜单')
+</script>

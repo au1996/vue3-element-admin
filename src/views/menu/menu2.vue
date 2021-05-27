@@ -1,7 +1,9 @@
 <template>
-  <h1>菜单2</h1>
+  <h1>{{ title }}</h1>
 </template>
 
-<script></script>
+<script setup>
+import { ref } from 'vue'
 
-<style lang="scss" scoped></style>
+const title = ref('菜单2')
+</script>

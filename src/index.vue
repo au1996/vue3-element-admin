@@ -11,18 +11,16 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="param.password" placeholder="密码" :type="passwordType" @keyup.enter="submitForm">
+          <el-input v-model="param.password" placeholder="密码" :type="passwordType" @keyup.enter="userLogin">
             <template #prepend>
-              <i v-show="passwordLock" class="el-icon-lock" @click="switchPass" />
-              <i v-show="!passwordLock" class="el-icon-unlock" @click="switchPass" />
+              <i v-if="passwordLock" class="el-icon-lock" @click="switchPass" />
+              <i v-else class="el-icon-unlock" @click="switchPass" />
             </template>
           </el-input>
         </el-form-item>
         <div class="login-btn">
-          <el-button type="primary" :loading="btnLoading" @click="submitForm">登录</el-button>
+          <el-button type="primary" :loading="btnLoading" @click="userLogin">登录</el-button>
         </div>
-        <p class="login-tips">用户名: admin 密码: 123</p>
-        <p class="login-tips">用户名: editor 密码: 456</p>
       </el-form>
     </div>
   </div>
@@ -32,7 +30,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { setToken, setRoles } from '@/utils/auth'
+import { setToken, setRoles, setUsername } from '@/utils/auth'
 import { user_login } from '@/api/user'
 
 const router = useRouter()
@@ -61,17 +59,16 @@ const switchPass = () => {
   passwordLock.value = !passwordLock.value
 }
 
-const submitForm = async () => {
+const userLogin = async () => {
   loginFormRef.value.validate((valid) => {
     if (valid) {
       btnLoading.value = true
-      // 访问登录接口
       user_login(param)
         .then((res) => {
           if (res.token) {
-            // 登录成功后；保存用户信息以及token
             setToken(res.token)
-            setRoles(res.role)
+            setRoles(res.role_name)
+            setUsername(res.username)
             router.push('/')
             ElMessage({
               type: 'success',
@@ -133,12 +130,6 @@ const submitForm = async () => {
   width: 100%;
   height: 36px;
   margin-bottom: 10px;
-}
-
-.login-tips {
-  font-size: 12px;
-  line-height: 30px;
-  color: #be1480;
 }
 
 .el-icon-lock,

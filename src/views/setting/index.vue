@@ -3,15 +3,15 @@
     <div class="header-box">
       <el-button type="primary" icon="el-icon-plus" @click="showDialog">添加用户</el-button>
     </div>
-    <el-table :data="tableList" border>
+    <el-table v-loading="tabelLoading" border :data="tableList">
       <el-table-column prop="username" label="账号" />
       <el-table-column prop="password" label="密码" />
-      <el-table-column prop="email" label="邮箱" />
       <el-table-column prop="role" label="角色">
         <template #default="{ row }">
           {{ getRoleName(row.role) }}
         </template>
       </el-table-column>
+      <el-table-column prop="email" label="邮箱" />
       <el-table-column label="操作" width="200">
         <template #default="{ row }">
           <el-button type="primary" size="small" icon="el-icon-edit" @click="showDialog(2, row)">修改</el-button>
@@ -27,13 +27,13 @@
         <el-form-item prop="password" label="密码">
           <el-input v-model="userForm.password"></el-input>
         </el-form-item>
-        <el-form-item prop="email" label="邮箱">
-          <el-input v-model="userForm.email"></el-input>
-        </el-form-item>
         <el-form-item prop="role" label="角色">
           <el-select v-model="userForm.role" placeholder="请选择" class="w100" @focus="getRoles">
             <el-option v-for="item in roleList" :key="item.name" :label="item.name" :value="item.name"></el-option>
           </el-select>
+        </el-form-item>
+        <el-form-item prop="email" label="邮箱">
+          <el-input v-model="userForm.email"></el-input>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -51,8 +51,9 @@ import { ref, reactive, onBeforeMount } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { get_user_list, add_user, get_roles, update_user_info, delete_user_info } from '@/api/user'
 
-const dialogVisible = ref(false)
 const dialogFlag = ref(1)
+const dialogVisible = ref(false)
+const tabelLoading = ref(false)
 const formLoading = ref(false)
 const userFormRef = ref(null)
 const roleList = reactive([])
@@ -73,10 +74,15 @@ onBeforeMount(() => {
  * 获取表格列表
  */
 const getTableList = () => {
-  get_user_list().then((res) => {
-    tableList.length = 0
-    tableList.push(...res.list)
-  })
+  tabelLoading.value = true
+  get_user_list()
+    .then((res) => {
+      tableList.length = 0
+      tableList.push(...res.list)
+    })
+    .finally(() => {
+      tabelLoading.value = false
+    })
 }
 
 /**
