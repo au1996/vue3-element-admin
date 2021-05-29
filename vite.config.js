@@ -7,7 +7,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig(({ command }) => {
   const prodMock = true
   return {
-    base: '/', // 开发或生产环境服务的公共基础路径。
+    base: '/',
     plugins: [
       vue(),
       viteMockServe({
@@ -28,7 +28,7 @@ export default defineConfig(({ command }) => {
       }
     },
     server: {
-      port: 3001,
+      port: 7001,
       open: false,
       proxy: {
         '/api': {
@@ -38,6 +38,21 @@ export default defineConfig(({ command }) => {
           rewrite: (path) => path.replace(new RegExp('^/api'), '')
         }
       }
+    },
+    build: {
+      // sourcemap: true,
+      manifest: true,
+      minify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vue: ['vue', 'vue-router', 'vuex'],
+            'element-plus': ['element-plus'],
+            echarts: ['echarts']
+          }
+        }
+      },
+      chunkSizeWarningLimit: 600
     }
   }
 })

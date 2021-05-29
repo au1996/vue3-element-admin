@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.32",
+    "echarts": "^5.1.1",
+    "element-plus": "^1.0.2-beta.45",
     "js-cookie": "^2.2.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
