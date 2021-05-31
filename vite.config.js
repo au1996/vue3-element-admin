@@ -28,7 +28,7 @@ export default defineConfig(({ command }) => {
       }
     },
     server: {
-      port: 7001,
+      port: 3001,
       open: false,
       proxy: {
         '/api': {
@@ -42,7 +42,6 @@ export default defineConfig(({ command }) => {
     build: {
       // sourcemap: true,
       manifest: true,
-      minify: true,
       rollupOptions: {
         output: {
           manualChunks: {
@@ -52,7 +51,7 @@ export default defineConfig(({ command }) => {
           }
         }
       },
-      chunkSizeWarningLimit: 600
+      chunkSizeWarningLimit: 500
     }
   }
 })

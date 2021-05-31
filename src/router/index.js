@@ -57,7 +57,7 @@ export const constantRoutes = [
                 path: '/menu1-1',
                 component: () => import('@/views/menu/menu11.vue'),
                 name: 'menu1-1',
-                meta: { title: '菜单1-1', roles: ['admin', 'editor'] }
+                meta: { title: '菜单1-1', roles: ['admin'] }
               },
               {
                 path: '/menu1-2',

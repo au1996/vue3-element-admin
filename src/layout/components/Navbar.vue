@@ -49,7 +49,7 @@ const toggleSideBar = () => {
 }
 
 const editPossword = () => {
-  ElMessage.warning('暂不支持修改密码')
+  ElMessage.warning('请联系管理员')
 }
 
 const loginOut = () => {

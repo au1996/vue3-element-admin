@@ -17,7 +17,7 @@
         background-color="#4a5a74"
         active-text-color="#409EFF"
       >
-        <SidebarItem v-for="item in routers" :key="item.path" :index="item.path" :item="item" />
+        <SidebarItem v-for="item in routerList" :key="item.path" :index="item.path" :item="item" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -31,8 +31,9 @@ import { getRoles } from '@/utils/auth'
 import SidebarItem from './SidebarItem.vue'
 import logoSrc from '@img/logo.png'
 
+const roles = getRoles()
 const store = useStore()
-const routers = reactive([])
+const routerList = reactive([])
 
 const opened = computed(() => store.state.app.sidebar.opened)
 const isCollapse = computed(() => !opened.value)
@@ -41,36 +42,39 @@ onMounted(() => {
   filterRoutes()
 })
 
+/**
+ * 权限过滤路由
+ */
 const filterRoutes = () => {
-  const roles = getRoles()
-  for (let i = 0; i < constantRoutes.length; i++) {
-    if (constantRoutes[i].path === '/') {
-      routers.push(...constantRoutes[i].children)
+  constantRoutes.forEach((item) => {
+    if (item.path === '/') {
+      routerList.push(...item.children)
     }
-  }
-  // 权限过滤
-  for (let i = 0; i < routers.length; i++) {
-    if (routers[i].meta && routers[i].meta.roles && !routers[i].meta.roles.includes(roles)) {
-      routers.splice(i, 1)
+  })
+  for (let i = 0; i < routerList.length; i++) {
+    if (routerList[i].meta && routerList[i].meta.roles && !routerList[i].meta.roles.includes(roles)) {
+      routerList.splice(i, 1)
       i--
     }
   }
-  for (let i = 0; i < routers.length; i++) {
-    const childrens = []
-    if (routers[i].children) {
-      for (let j = 0; j < routers[i].children.length; j++) {
-        // 权限过滤
-        const childs = routers[i].children[j]
-        if (
-          (childs.meta && !childs.meta.roles) ||
-          (childs.meta && childs.meta.roles && childs.meta.roles.includes(roles))
-        ) {
-          childrens.push(childs)
-        }
+  filterChildrens(routerList)
+}
+
+/**
+ * 权限过滤子路由
+ */
+const filterChildrens = (routers) => {
+  const childrens = []
+  routers.forEach((item) => {
+    if ((item.meta && !item.meta.roles) || (item.meta && item.meta.roles && item.meta.roles.includes(roles))) {
+      childrens.push(item)
+      if (item.children) {
+        filterChildrens(item.children)
       }
-      routers[i].children = [...childrens]
     }
-  }
+  })
+  routers.length = 0
+  routers.push(...childrens)
 }
 </script>
 
