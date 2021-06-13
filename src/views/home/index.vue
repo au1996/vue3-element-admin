@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="home-view">
     <el-empty description="首页" />
-    <h2>{{ msg }}</h2>
+    <h2 class="title">{{ msg }}</h2>
+    <Chart height="400px" />
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
+import Chart from '@/components/Charts/index.vue'
 
 const msg = ref('Welcome to the management system')
 
@@ -20,8 +22,10 @@ setInterval(() => {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  color: v-bind('h2Style.color');
-  text-align: center;
+.home-view {
+  .title {
+    color: v-bind('h2Style.color');
+    text-align: center;
+  }
 }
 </style>

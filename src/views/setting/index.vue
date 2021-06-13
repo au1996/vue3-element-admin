@@ -12,6 +12,11 @@
         </template>
       </el-table-column>
       <el-table-column prop="email" label="邮箱" />
+      <el-table-column prop="createTime" label="创建时间">
+        <template #default="{ row }">
+          {{ DateFormat(row.createTime) }}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="200">
         <template #default="{ row }">
           <el-button type="primary" size="small" icon="el-icon-edit" @click="showDialog(2, row)">修改</el-button>
@@ -47,10 +52,17 @@
 </template>
 
 <script setup>
-import { ref, reactive, onBeforeMount } from 'vue'
+import { ref, reactive, onBeforeMount, getCurrentInstance } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { get_user_list, add_user, get_roles, update_user_info, delete_user_info } from '@/api/user'
 
+/**
+ * 获取组件实例
+ * 其实不用这么麻烦，直接 import { DateFormat } from '@/utils/util' 更方便
+ * 我只是试试这个API
+ */
+const internalInstance = getCurrentInstance()
+const DateFormat = internalInstance.appContext.config.globalProperties.$DateFormat
 const dialogFlag = ref(1)
 const dialogVisible = ref(false)
 const tabelLoading = ref(false)

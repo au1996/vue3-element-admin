@@ -10,9 +10,11 @@ import router from './router'
 import store from './store'
 
 import './permission' // permission control
+import { DateFormat } from '@/utils/util'
 
 const app = createApp(App)
-
 app.use(router).use(store).use(ElementPlus).mount('#app')
+
+app.config.globalProperties.$DateFormat = DateFormat
 
 export default app
