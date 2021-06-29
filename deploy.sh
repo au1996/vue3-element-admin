@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :memo: add charts component'
+git commit -m 'feat: :pushpin: Fixed version number'
 git push origin master
 
 cd -
