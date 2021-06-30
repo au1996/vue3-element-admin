@@ -6,22 +6,16 @@
       <el-tooltip effect="dark" content="全屏" placement="bottom">
         <Screenfull class="screenfull" />
       </el-tooltip>
-      <el-dropdown class="avatar-container right-menu-item" trigger="hover">
+      <el-dropdown class="avatar-container right-menu-item">
         <div class="avatar-wrapper">
           <img src="http://www.xueyueob.cn/icons/favicon.ico" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <router-link to="/">
-              <el-dropdown-item>首页</el-dropdown-item>
-            </router-link>
-            <el-dropdown-item divided>
-              <div @click="editPossword">修改密码</div>
-            </el-dropdown-item>
-            <el-dropdown-item divided>
-              <div @click="loginOut">登出</div>
-            </el-dropdown-item>
+            <el-dropdown-item @click="$router.push('/')">首页</el-dropdown-item>
+            <el-dropdown-item divided @click="editPossword">修改密码</el-dropdown-item>
+            <el-dropdown-item divided @click="loginOut">登出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

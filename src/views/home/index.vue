@@ -2,13 +2,11 @@
   <div class="home-view">
     <el-empty description="首页" />
     <h2 class="title">{{ msg }}</h2>
-    <Chart height="400px" />
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
-import Chart from '@/components/Charts/index.vue'
 
 const msg = ref('Welcome to the management system')
 

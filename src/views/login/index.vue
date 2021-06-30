@@ -96,7 +96,7 @@ const submitForm = async () => {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #2d3a4b;
+  background-color: #235bae;
   background-image: url(/img/login_bg.jpg);
   background-size: cover;
 }

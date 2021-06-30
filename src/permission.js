@@ -13,7 +13,6 @@ router.beforeEach(async (to, from, next) => {
   console.log('beforeEach: from', from)
   // start progress bar
   start()
-
   // determine whether the user has logged in
   const hasToken = getToken()
   if (hasToken) {

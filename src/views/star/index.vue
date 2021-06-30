@@ -4,20 +4,38 @@
 
 <script setup>
 import Chart from '@/components/Charts/index.vue'
+
+const list = []
+for (let i = 0; i <= 100; i++) {
+  const theta = (i / 100) * 360
+  const r = 5 * (1 + Math.sin((theta / 180) * Math.PI))
+  list.push([r, theta])
+}
 const edataObj = {
-  xAxis: {
-    type: 'category',
-    boundaryGap: false,
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  title: {
+    text: '极坐标双数值轴'
   },
-  yAxis: {
-    type: 'value'
+  legend: {
+    data: ['line']
   },
+  polar: {},
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  angleAxis: {
+    type: 'value',
+    startAngle: 0
+  },
+  radiusAxis: {},
   series: [
     {
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      coordinateSystem: 'polar',
+      name: 'line',
       type: 'line',
-      areaStyle: {}
+      data: list
     }
   ]
 }

@@ -17,7 +17,7 @@
         background-color="#4a5a74"
         active-text-color="#409EFF"
       >
-        <SidebarItem v-for="item in routerList" :key="item.path" :index="item.path" :item="item" />
+        <SidebarItem v-for="item in routerList" :key="item.path" :index="item.path" :nav="item" />
       </el-menu>
     </el-scrollbar>
   </div>

@@ -11,13 +11,13 @@
         <div class="bullshit__oops">OOPS!</div>
         <div class="bullshit__info">
           All rights reserved
-          <a style="color: #20a0ff;" href="https://au1996.gitee.io/blog/" target="_blank">雪月欧巴</a>
+          <a class="blue" href="https://au1996.gitee.io/blog/" target="_blank">雪月</a>
         </div>
         <div class="bullshit__headline">{{ message }}</div>
         <div class="bullshit__info">
           Please check that the URL you entered is correct, or click the button below to return to the homepage.
         </div>
-        <a href="/" class="bullshit__return-home">Back to home</a>
+        <div class="bullshit__return-home" @click="$router.replace('/')">Back to home</div>
       </div>
     </div>
   </div>
@@ -241,5 +241,9 @@ const message = 'The webmaster said that you can not enter this page...'
       }
     }
   }
+}
+
+.blue {
+  color: #20a0ff;
 }
 </style>

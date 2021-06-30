@@ -13,7 +13,7 @@
             <router-link to="/"> 回首页 </router-link>
           </li>
           <li class="link-type">
-            <a href="https://www.taobao.com/" target="brank">逛淘宝</a>
+            <a href="https://github.com/au1996" target="brank">随便看看</a>
           </li>
           <li><a href="#" @click.prevent="dialogVisible = true">点我看图</a></li>
         </ul>
@@ -34,7 +34,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
-const ewizardClap = 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646'
+const ewizardClap = 'https://au1996.gitee.io/blog/images/avatar.png'
 const dialogVisible = ref(false)
 
 const back = () => {
