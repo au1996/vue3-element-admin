@@ -1,11 +1,11 @@
 {
   "index.html": {
-    "file": "assets/index.29f51e5f.js",
+    "file": "assets/index.18108296.js",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_vue.4d80af16.js",
-      "_element-plus.02b112bc.js"
+      "_vue.ea8fb8d2.js",
+      "_element-plus.aa56e511.js"
     ],
     "dynamicImports": [
       "src/views/login/index.vue",
@@ -19,6 +19,7 @@
       "src/views/menu/menu11.vue",
       "src/views/menu/menu12.vue",
       "src/views/menu/menu2.vue",
+      "src/views/xueyue/index.vue",
       "src/views/star/index.vue"
     ],
     "css": [
@@ -29,150 +30,157 @@
       "assets/element-icons.de5eb258.ttf"
     ]
   },
-  "_vue.4d80af16.js": {
-    "file": "assets/vue.4d80af16.js"
+  "_vue.ea8fb8d2.js": {
+    "file": "assets/vue.ea8fb8d2.js"
   },
-  "_element-plus.02b112bc.js": {
-    "file": "assets/element-plus.02b112bc.js",
+  "_element-plus.aa56e511.js": {
+    "file": "assets/element-plus.aa56e511.js",
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ]
   },
   "_echarts.56414442.js": {
     "file": "assets/echarts.56414442.js"
   },
   "src/views/login/index.vue": {
-    "file": "assets/index.ace8cb1a.js",
+    "file": "assets/index.869b51a6.js",
     "src": "src/views/login/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js",
-      "_element-plus.02b112bc.js",
-      "index.html",
-      "_user.81656520.js"
+      "_vue.ea8fb8d2.js",
+      "_element-plus.aa56e511.js"
     ],
     "css": [
-      "assets/index.5d474597.css"
-    ]
-  },
-  "_user.81656520.js": {
-    "file": "assets/user.81656520.js",
-    "imports": [
-      "_element-plus.02b112bc.js",
-      "index.html"
+      "assets/index.bbfd24e3.css"
     ]
   },
   "src/views/error-page/404.vue": {
-    "file": "assets/404.60b6a38e.js",
+    "file": "assets/404.4c7987d3.js",
     "src": "src/views/error-page/404.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ],
     "css": [
       "assets/404.5e433854.css"
     ]
   },
   "src/views/error-page/401.vue": {
-    "file": "assets/401.90b554de.js",
+    "file": "assets/401.fbf2f339.js",
     "src": "src/views/error-page/401.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ],
     "css": [
       "assets/401.7a90aeaf.css"
     ]
   },
   "src/layout/index.vue": {
-    "file": "assets/index.cf95ed5a.js",
+    "file": "assets/index.9a6df860.js",
     "src": "src/layout/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js",
+      "_vue.ea8fb8d2.js",
       "index.html",
-      "_element-plus.02b112bc.js",
-      "_user.81656520.js"
+      "_element-plus.aa56e511.js"
     ],
     "css": [
-      "assets/index.5a9866c5.css"
+      "assets/index.9110ad18.css"
     ],
     "assets": [
       "assets/logo.03d6d6da.png"
     ]
   },
   "src/views/home/index.vue": {
-    "file": "assets/index.50cb5c36.js",
+    "file": "assets/index.f30ca817.js",
     "src": "src/views/home/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ],
     "css": [
       "assets/index.0c6f8b15.css"
     ]
   },
   "src/views/setting/index.vue": {
-    "file": "assets/index.e38f12ca.js",
+    "file": "assets/index.ecd457ca.js",
     "src": "src/views/setting/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_element-plus.02b112bc.js",
-      "_user.81656520.js",
-      "_vue.4d80af16.js",
+      "_vue.ea8fb8d2.js",
+      "_element-plus.aa56e511.js",
       "index.html"
     ],
     "css": [
-      "assets/index.44b31072.css"
+      "assets/index.1ed96aa3.css"
     ]
   },
   "src/views/menu/index.vue": {
-    "file": "assets/index.d3dbfd43.js",
+    "file": "assets/index.1577bff0.js",
     "src": "src/views/menu/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ]
   },
   "src/views/menu/menu10.vue": {
-    "file": "assets/menu10.c9fafab8.js",
+    "file": "assets/menu10.36c77236.js",
     "src": "src/views/menu/menu10.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ]
   },
   "src/views/menu/menu11.vue": {
-    "file": "assets/menu11.300e39be.js",
+    "file": "assets/menu11.812b3075.js",
     "src": "src/views/menu/menu11.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ]
   },
   "src/views/menu/menu12.vue": {
-    "file": "assets/menu12.cff11e22.js",
+    "file": "assets/menu12.584994ae.js",
     "src": "src/views/menu/menu12.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
     ]
   },
   "src/views/menu/menu2.vue": {
-    "file": "assets/menu2.464e7b8a.js",
+    "file": "assets/menu2.1b23a931.js",
     "src": "src/views/menu/menu2.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_vue.4d80af16.js"
+      "_vue.ea8fb8d2.js"
+    ]
+  },
+  "src/views/xueyue/index.vue": {
+    "file": "assets/index.ac46a246.js",
+    "src": "src/views/xueyue/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.cbcd4683.js",
+      "_vue.ea8fb8d2.js",
+      "_echarts.56414442.js"
+    ]
+  },
+  "_index.cbcd4683.js": {
+    "file": "assets/index.cbcd4683.js",
+    "imports": [
+      "_echarts.56414442.js",
+      "_vue.ea8fb8d2.js"
     ]
   },
   "src/views/star/index.vue": {
-    "file": "assets/index.4b837829.js",
+    "file": "assets/index.ab76cf53.js",
     "src": "src/views/star/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_echarts.56414442.js",
-      "_vue.4d80af16.js"
+      "_index.cbcd4683.js",
+      "_vue.ea8fb8d2.js",
+      "_echarts.56414442.js"
     ]
   }
 }

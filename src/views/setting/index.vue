@@ -11,8 +11,14 @@
           {{ getRoleName(row.role) }}
         </template>
       </el-table-column>
-      <el-table-column prop="email" label="邮箱" />
-      <el-table-column prop="createTime" label="创建时间">
+      <el-table-column prop="email" label="邮箱" min-width="120" />
+      <el-table-column prop="introduction" label="介绍" />
+      <el-table-column prop="avatar" label="头像">
+        <template #default="{ row }">
+          <img v-show="row.avatar" :src="row.avatar" width="40" height="40" />
+        </template>
+      </el-table-column>
+      <el-table-column prop="createTime" label="创建时间" min-width="160">
         <template #default="{ row }">
           {{ DateFormat(row.createTime) }}
         </template>
@@ -39,6 +45,9 @@
         </el-form-item>
         <el-form-item prop="email" label="邮箱">
           <el-input v-model="userForm.email"></el-input>
+        </el-form-item>
+        <el-form-item prop="introduction" label="介绍">
+          <el-input v-model="userForm.introduction"></el-input>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -73,8 +82,9 @@ const tableList = reactive([])
 const userForm = reactive({
   username: '',
   password: '',
+  role: '',
   email: '',
-  role: ''
+  introduction: ''
 })
 
 onBeforeMount(() => {

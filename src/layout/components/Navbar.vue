@@ -8,7 +8,7 @@
       </el-tooltip>
       <el-dropdown class="avatar-container right-menu-item">
         <div class="avatar-wrapper">
-          <img src="http://www.xueyueob.cn/icons/favicon.ico" class="user-avatar" />
+          <img :src="avatar ? avatar : '/img/logo.png'" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <template #dropdown>
@@ -31,12 +31,11 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
-import { removeToken, removeRoles } from '@/utils/auth'
-import { user_logout } from '@/api/user'
 
 const router = useRouter()
 const store = useStore()
 const opened = computed(() => store.state.app.sidebar.opened)
+const avatar = computed(() => store.state.user.avatar)
 
 const toggleSideBar = () => {
   store.dispatch('app/toggleSideBar')
@@ -53,12 +52,8 @@ const loginOut = () => {
     type: 'warning'
   })
     .then(() => {
-      user_logout().then(() => {
-        removeToken()
-        removeRoles()
-        store.dispatch('tagsView/delAllViews').finally(() => {
-          router.push('/login')
-        })
+      store.dispatch('user/logout').then(() => {
+        router.push('/login')
       })
     })
     .catch(() => {})

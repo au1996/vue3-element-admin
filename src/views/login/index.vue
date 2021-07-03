@@ -31,11 +31,11 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
-import { setToken, setRoles } from '@/utils/auth'
-import { user_login } from '@/api/user'
 
 const router = useRouter()
+const store = useStore()
 
 const btnLoading = ref(false)
 const loginFormRef = ref(null)
@@ -66,20 +66,10 @@ const submitForm = async () => {
     if (valid) {
       btnLoading.value = true
       // 访问登录接口
-      user_login(param)
-        .then((res) => {
-          if (res.token) {
-            // 登录成功后；保存用户信息以及token
-            setToken(res.token)
-            setRoles(res.role)
-            router.push('/')
-            ElMessage({
-              type: 'success',
-              message: res.message
-            })
-          } else {
-            ElMessage.error(res.message)
-          }
+      store
+        .dispatch('user/login', param)
+        .then(() => {
+          router.push('/')
         })
         .finally(() => {
           btnLoading.value = false

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import { getToken, removeToken, removeRoles } from './auth'
+import { getToken, removeToken, removeRoles, removeName, removeAvatar } from './auth'
 
 const service = axios.create({
   // baseURL: import.meta.env.VITE_BASE_API,
@@ -27,6 +27,8 @@ service.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       removeToken()
       removeRoles()
+      removeName()
+      removeAvatar()
       location.reload()
     }
     ElMessage({

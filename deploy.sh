@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :rocket: add dist dir'
+git commit -m 'feat: :rocket: add store user modules'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 
