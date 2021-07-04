@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { defineProps, toRefs, defineComponent } from 'vue'
+import { defineProps, toRefs } from 'vue'
 
 const props = defineProps({
   nav: {

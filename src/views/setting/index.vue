@@ -39,7 +39,7 @@
           <el-input v-model="userForm.password"></el-input>
         </el-form-item>
         <el-form-item prop="role" label="角色">
-          <el-select v-model="userForm.role" placeholder="请选择" class="w100" @focus="getRoles">
+          <el-select v-model="userForm.role" placeholder="请选择" class="w-full" @focus="getRoles">
             <el-option v-for="item in roleList" :key="item.name" :label="item.name" :value="item.name"></el-option>
           </el-select>
         </el-form-item>

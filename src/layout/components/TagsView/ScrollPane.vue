@@ -10,12 +10,12 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'ScrollPane',
   emits: {
-    scroll: null,
-    tagAndTagSpacing: 4
+    scroll: null
   },
   data() {
     return {
-      left: 0
+      left: 0,
+      tagAndTagSpacing: 4
     }
   },
   computed: {

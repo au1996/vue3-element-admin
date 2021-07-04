@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :heavy_minus_sign: delete dist dir'
+git commit -m 'feat: :construction: update w100 to w-full'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 
