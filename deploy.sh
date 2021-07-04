@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :rocket: add store user modules'
+git commit -m 'feat: :heavy_minus_sign: delete xueyue charts'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 

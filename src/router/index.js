@@ -76,16 +76,16 @@ export const constantRoutes = [
         ]
       },
       {
-        path: '/xueyue',
-        component: () => import('@/views/xueyue/index.vue'),
-        name: 'Xueyue',
-        meta: { title: '雪月', icon: 'el-icon-s-flag', roles: ['admin', 'editor'] }
-      },
-      {
         path: '/star',
         component: () => import('@/views/star/index.vue'),
         name: 'Star',
         meta: { title: '图表', icon: 'el-icon-s-data', roles: ['admin', 'editor'] }
+      },
+      {
+        path: '/xueyue',
+        component: () => import('@/views/xueyue/index.vue'),
+        name: 'Xueyue',
+        meta: { title: '雪月', icon: 'el-icon-s-flag', roles: ['admin'] }
       }
     ]
   }

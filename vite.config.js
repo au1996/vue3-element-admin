@@ -7,7 +7,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig(({ command }) => {
   const prodMock = true
   return {
-    base: '/',
+    base: './',
     plugins: [
       vue(),
       viteMockServe({
