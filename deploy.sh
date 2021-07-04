@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :heavy_minus_sign: delete xueyue charts'
+git commit -m 'feat: :heavy_minus_sign: delete dist dir'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 
