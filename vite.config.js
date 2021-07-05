@@ -7,7 +7,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig(({ command }) => {
   const prodMock = true
   return {
-    base: './',
+    base: command === 'serve' ? '/' : '/vue3-element-admin/',
     plugins: [
       vue(),
       viteMockServe({
@@ -25,6 +25,13 @@ export default defineConfig(({ command }) => {
       alias: {
         '@': resolve('./src'),
         '@img': resolve('./src/assets/img')
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "./src/styles/variables.scss";`
+        }
       }
     },
     server: {
