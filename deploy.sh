@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :construction: update base url and add scss preprocessorOptions'
+git commit -m 'feat: :ambulance: delete ignore dist dir'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 
