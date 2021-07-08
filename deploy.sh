@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :ambulance: delete ignore dist dir'
+git commit -m 'feat: :seedling: update router type to hash'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 

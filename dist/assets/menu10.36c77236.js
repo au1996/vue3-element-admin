@@ -1,1 +1,0 @@
-import{b as e,Y as s,W as a,c as t,a as u,l,w as n,q as o}from"./vue.ea8fb8d2.js";const r={expose:[],setup(r){const p=e("菜单1");return(e,r)=>{const c=s("router-view");return a(),t("div",null,[u("h1",null,l(p.value),1),u(c,null,{default:n((({Component:e})=>[(a(),t(o(e)))])),_:1})])}}};export default r;
