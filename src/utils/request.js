@@ -15,6 +15,14 @@ service.interceptors.request.use(
     if (token) {
       config.headers['Authorization'] = 'Bearer__' + token
     }
+    // 加上取消请求
+    config.cancelToken = new axios.CancelToken((cancel) => {
+      if (Array.isArray(window.axiosCancelTokenList)) {
+        window.axiosCancelTokenList.push(cancel)
+      } else {
+        window.axiosCancelTokenList = [cancel]
+      }
+    })
     return config
   },
   (error) => Promise.reject(error)

@@ -11,6 +11,12 @@ const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
   console.log('beforeEach: from', from)
+
+  // cancel axios request
+  if (Array.isArray(window.axiosCancelTokenList)) {
+    window.axiosCancelTokenList.forEach((e) => e('cancel request'))
+    window.axiosCancelTokenList = []
+  }
   // start progress bar
   start()
   // determine whether the user has logged in

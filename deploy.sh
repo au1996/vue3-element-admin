@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :seedling: update router type to hash'
+git commit -m 'feat: :seedling: add cancel request'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 
