@@ -8,12 +8,13 @@ import './styles/index.scss' // global css
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import directives from './directive'
 
 import './permission' // permission control
 import { DateFormat } from '@/utils/util'
 
 const app = createApp(App)
-app.use(router).use(store).use(ElementPlus).mount('#app')
+app.use(router).use(store).use(ElementPlus).use(directives).mount('#app')
 
 app.config.globalProperties.$DateFormat = DateFormat
 

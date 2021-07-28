@@ -7,7 +7,6 @@
 [vue3-element-admin](http://admin.xueyueob.cn) 是一个后台前端解决方案，它基于 [vue3](https://v3.cn.vuejs.org/guide/migration/introduction.html) 和 [element-plus](https://element-plus.gitee.io/#/zh-CN)实现。使用了最新的前端技术栈 [vite](https://cn.vitejs.dev/)，提供最基础的框架模型，可以帮助你快速搭建中后台产品原型。PS：我是参考 [@PanJiaChen](https://github.com/PanJiaChen) 开发维护的 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)， 十分感谢大佬对开源社区做出的贡献 :)
 
 - [在线预览](http://au1996.github.io/vue3-element-admin/)
-- [国内访问](http://admin.xueyueob.cn)
 
 ## 前序准备
 
@@ -60,8 +59,6 @@ npm run lint:css
 |                                                                                             not support                                                                                              |                                                                                            last 2 versions                                                                                             |                                                                                                  last 2 versions                                                                                                  |                                                                                                last 2 versions                                                                                                |                                                                                                last 2 versions                                                                                                |
 
 更多浏览器可以查看 [Can I Use Es Module](https://caniuse.com/?search=ES%20Module)
-
-[在线 Demo](http://admin.xueyueob.cn)
 
 [TypeScript 版本传送门](https://github.com/au1996/vue3-element-admin-ts)
 

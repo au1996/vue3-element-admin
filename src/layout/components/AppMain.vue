@@ -2,9 +2,9 @@
   <section class="app-main">
     <router-view v-slot="{ Component }">
       <transition>
-        <!-- <keep-alive> -->
-        <component :is="Component" />
-        <!-- </keep-alive> -->
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
       </transition>
     </router-view>
   </section>
