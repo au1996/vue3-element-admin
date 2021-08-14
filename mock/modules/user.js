@@ -22,7 +22,7 @@ const userList = [
     password: '123456',
     role: 'admin',
     introduction: '否定先生',
-    avatar: 'http://www.xueyueob.cn/icons/favicon.ico',
+    avatar: 'https://www.xueyueob.cn/icons/favicon.ico',
     email: 'xueyue@qq.com',
     createTime: 1625213469913
   }

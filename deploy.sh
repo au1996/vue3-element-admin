@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :seedling: add directive'
+git commit -m 'feat: :zap: update vue version'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 
