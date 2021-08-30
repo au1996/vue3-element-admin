@@ -1,1 +1,0 @@
-import{a4 as s,a5 as a,W as e,c as t,a8 as c,a as o}from"./vue.0c21260b.js";const d={},r=c();s("data-v-20172415");const i={class:"xueyueView"},l=o("h1",{class:"title"},"雪月测试 scss 全局变量",-1);a();const n=r(((s,a)=>(e(),t("div",i,[l]))));d.render=n,d.__scopeId="data-v-20172415";export default d;
