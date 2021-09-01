@@ -8,28 +8,24 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      num: 20
-    }
-  },
-  methods: {
-    add(n) {
-      if (n) {
-        this.num += n
-      } else {
-        this.num++
-      }
-    },
-    minus(n) {
-      if (n) {
-        this.num -= n
-      } else {
-        this.num--
-      }
-    }
+<script setup>
+import { ref } from 'vue'
+
+const num = ref(20)
+
+const add = (n) => {
+  if (n) {
+    num.value += n
+  } else {
+    num.value++
+  }
+}
+
+const minus = (n) => {
+  if (n) {
+    num.value -= n
+  } else {
+    num.value--
   }
 }
 </script>

@@ -21,13 +21,12 @@
       <div v-for="child in nav.children" :key="child.path">
         <SidebarItem
           v-if="child.children && child.children.length"
-          :key="child.path"
           :index="child.path"
           :is-nest="true"
           :nav="child"
           class="nest-menu"
         />
-        <el-menu-item v-else :key="child.path" :index="child.path">
+        <el-menu-item v-else :index="child.path">
           <template #title>
             <span>{{ child.meta.title }}</span>
           </template>

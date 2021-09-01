@@ -11,43 +11,38 @@
   </el-breadcrumb>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  data() {
-    return {
-      levelList: []
-    }
-  },
-  watch: {
-    $route() {
-      this.getBreadcrumb()
-    }
-  },
-  created() {
-    this.getBreadcrumb()
-  },
-  methods: {
-    getBreadcrumb() {
-      // only show routes with meta.title
-      let matched = this.$route.matched.filter((item) => item.meta && item.meta.title)
-      const first = matched[0]
+<script setup>
+import { reactive, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
-      if (!this.isDashboard(first)) {
-        matched = [{ path: '/home', meta: { title: '首页' }}].concat(matched)
-      }
+const route = useRoute()
+const levelList = reactive([])
 
-      this.levelList = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
-    },
-    isDashboard(meta) {
-      const name = meta && meta.name
-      if (!name) {
-        return false
-      }
-      return name.trim().toLocaleLowerCase() === 'Home'.toLocaleLowerCase()
-    }
-  }
+watch(route, () => {
+  getBreadcrumb()
 })
+
+const getBreadcrumb = () => {
+  let matched = route.matched.filter((item) => item.meta && item.meta.title)
+  const first = matched[0]
+
+  if (!isDashboard(first)) {
+    matched = [{ path: '/home', meta: { title: '首页' }}].concat(matched)
+  }
+  levelList.length = 0
+  const list = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+  levelList.push(...list)
+}
+
+const isDashboard = (meta) => {
+  const name = meta && meta.name
+  if (!name) {
+    return false
+  }
+  return name.trim().toLocaleLowerCase() === 'Home'.toLocaleLowerCase()
+}
+
+getBreadcrumb()
 </script>
 
 <style lang="scss" scoped>

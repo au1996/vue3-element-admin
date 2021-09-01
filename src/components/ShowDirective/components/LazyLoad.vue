@@ -10,17 +10,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      url: 'https://www.xueyueob.cn/cube/cube01.bmp',
-      url2: 'https://www.xueyueob.cn/cube/cube02.bmp',
-      url3: 'https://www.xueyueob.cn/cube/cube03.bmp',
-      url4: 'https://www.xueyueob.cn/cube/cube04.bmp',
-      url5: 'https://www.xueyueob.cn/cube/cube05.bmp',
-      url6: 'https://www.xueyueob.cn/cube/cube06.bmp'
-    }
-  }
-}
+<script setup>
+const url = 'https://www.xueyueob.cn/cube/cube01.bmp'
+const url2 = 'https://www.xueyueob.cn/cube/cube02.bmp'
+const url3 = 'https://www.xueyueob.cn/cube/cube03.bmp'
+const url4 = 'https://www.xueyueob.cn/cube/cube04.bmp'
+const url5 = 'https://www.xueyueob.cn/cube/cube05.bmp'
+const url6 = 'https://www.xueyueob.cn/cube/cube06.bmp'
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <div style="padding: 0 15px;" @click="$emit('toggleClick')">
+  <div class="pl-15 pr-15" @click="toggleClick">
     <svg
-      :class="{ 'is-active': isActive }"
+      :class="{ 'is-active': props.isActive }"
       class="hamburger"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
@@ -15,20 +15,21 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'Hamburger',
-  props: {
-    isActive: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: {
-    toggleClick: null
+<script setup>
+import { defineProps, defineEmits } from 'vue'
+
+const props = defineProps({
+  isActive: {
+    type: Boolean,
+    default: false
   }
 })
+
+const emits = defineEmits(['toggleClick'])
+
+const toggleClick = () => {
+  emits('toggleClick')
+}
 </script>
 
 <style scoped>

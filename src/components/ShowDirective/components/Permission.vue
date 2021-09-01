@@ -13,12 +13,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      num: 10
-    }
-  }
-}
-</script>
+<script setup></script>

@@ -6,13 +6,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      val: '雪月',
-      copyVal: ''
-    }
-  }
-}
+<script setup>
+import { ref } from 'vue'
+
+const val = ref('雪月')
+const copyVal = ref('')
 </script>
