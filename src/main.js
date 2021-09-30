@@ -14,7 +14,9 @@ import './permission' // permission control
 import { DateFormat } from '@/utils/util'
 
 const app = createApp(App)
-app.use(router).use(store).use(ElementPlus).use(directives).mount('#app')
+app.use(ElementPlus)
+app.use(directives)
+app.use(router).use(store).mount('#app')
 
 app.config.globalProperties.$DateFormat = DateFormat
 

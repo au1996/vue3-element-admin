@@ -12,7 +12,6 @@
         :default-active="$route.path"
         :collapse="isCollapse"
         :show-timeout="200"
-        :unique-opened="true"
         text-color="#fff"
         background-color="#4a5a74"
         active-text-color="#409EFF"
