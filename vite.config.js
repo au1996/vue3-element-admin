@@ -7,6 +7,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig(({ command }) => {
   const prodMock = true
   return {
+    // base: '/',
     base: command === 'serve' ? '/' : '/vue3-element-admin/',
     plugins: [
       vue(),

@@ -1,5 +1,5 @@
 export default {
-  mounted: function (el, binding) {
+  mounted(el, binding) {
     if (binding.value) {
       const { text, fontSize, color } = binding.value
       addWaterMarker(el, text, fontSize, color)

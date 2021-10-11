@@ -28,9 +28,9 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import Hamburger from '@/components/Hamburger/index.vue'
-import Breadcrumb from '@/components/Breadcrumb/index.vue'
-import Screenfull from '@/components/Screenfull/index.vue'
+import Hamburger from './Hamburger.vue'
+import Breadcrumb from './Breadcrumb.vue'
+import Screenfull from './Screenfull.vue'
 
 const router = useRouter()
 const store = useStore()

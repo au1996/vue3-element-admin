@@ -1,25 +1,16 @@
-import debounce from './debounce'
-import throttle from './throttle'
-import permission from './permission'
-import lazyLoad from './lazyLoad'
-import waterMarker from './waterMarker'
-import draggable from './draggable'
-import copy from './copy'
+const componentFiles = import.meta.globEager('./*.js')
+const pathList = []
 
-const directives = {
-  debounce,
-  throttle,
-  permission,
-  lazyLoad,
-  waterMarker,
-  draggable,
-  copy
+for (const path in componentFiles) {
+  pathList.push(path)
 }
 
 export default {
   install(Vue) {
-    Object.keys(directives).forEach((key) => {
-      Vue.directive(key, directives[key])
+    pathList.forEach((path) => {
+      const moduleName = path.replace(/^\.\/(.*)\.\w+$/, '$1')
+      const value = componentFiles[path]
+      Vue.directive(moduleName, value.default)
     })
   }
 }

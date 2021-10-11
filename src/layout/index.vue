@@ -20,7 +20,7 @@ import { ref, computed, watch, onBeforeMount, onMounted, onBeforeUnmount } from 
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import Sidebar from './components/Sidebar/index.vue'
-import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar/index.vue'
 import TagsView from './components/TagsView/index.vue'
 import AppMain from './components/AppMain.vue'
 

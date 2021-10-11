@@ -1,8 +1,12 @@
 <template>
   <div class="mt-20 w-full button">
-    <button v-draggable>可拖拽的按钮</button>
+    <button v-draggable>{{ msg }}</button>
   </div>
 </template>
+
+<script setup>
+const msg = '可拖拽的按钮'
+</script>
 
 <style lang="scss" scoped>
 .button {

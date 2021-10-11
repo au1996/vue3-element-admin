@@ -13,7 +13,7 @@ export default {
 
 function checkArray(key) {
   const arr = ['admin', 'xueyue']
-  if (~arr.indexOf(key)) {
+  if (arr.includes(key)) {
     return true // 有权限
   } else {
     return false // 无权限

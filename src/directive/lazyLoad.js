@@ -1,5 +1,5 @@
 export default {
-  mounted(el, binding, vnode) {
+  mounted(el, binding) {
     const defaultSrc = 'http://www.xueyueob.cn/icons/favicon.ico'
     init(el, binding.value, defaultSrc)
     if (IntersectionObserver) {

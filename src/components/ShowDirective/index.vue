@@ -9,22 +9,23 @@
       <Permission v-if="activeName === 'permission'" />
       <LazyLoad v-if="activeName === 'lazyLoad'" />
       <WaterMarker v-if="activeName === 'waterMarker'" />
-      <Draggable v-if="activeName === 'draggable'" />
+      <Draggabler v-if="activeName === 'draggable'" />
       <Copy v-if="activeName === 'copy'" />
     </el-tabs>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import Debounce from './components/Debounce.vue'
 import Throttle from './components/Throttle.vue'
 import Permission from './components/Permission.vue'
 import LazyLoad from './components/LazyLoad.vue'
 import WaterMarker from './components/WaterMarker.vue'
-import Draggable from './components/Draggable.vue'
+import Draggabler from './components/Draggable.vue'
 import Copy from './components/Copy.vue'
 
-const activeName = 'debounce'
+const activeName = ref('debounce')
 const list = [
   { label: '防抖', name: 'debounce' },
   { label: '节流', name: 'throttle' },

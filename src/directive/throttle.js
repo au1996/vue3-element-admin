@@ -1,5 +1,5 @@
 export default {
-  mounted(el, binding, vnode) {
+  mounted(el, binding) {
     let wait = 500
     _handleParams(el, binding)
     el.removeEventListener('click', () => {})
@@ -24,7 +24,7 @@ export default {
   updated(el, binding) {
     _handleParams(el, binding)
   },
-  unMounted(el) {
+  unmounted(el) {
     el.removeEventListener('click', () => {})
   }
 }
