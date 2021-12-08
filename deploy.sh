@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :zap: update stylelintrc'
+git commit -m 'feat: :tada: init webpack version'
 git push origin master
 git subtree push --prefix dist origin gh-pages
 

@@ -36,7 +36,7 @@ const roleList = [
 const userMockList = [
   {
     url: '/api/login',
-    method: 'post',
+    type: 'post',
     timeout: 1000,
     statusCode: 200,
     response: ({ body }) => {
@@ -64,7 +64,7 @@ const userMockList = [
   },
   {
     url: '/api/logout',
-    method: 'get',
+    type: 'get',
     response: ({ query }) => {
       return {
         code: 20000,
@@ -75,7 +75,7 @@ const userMockList = [
   },
   {
     url: '/api/users',
-    method: 'get',
+    type: 'get',
     timeout: 500,
     response: () => {
       const list = userList
@@ -88,7 +88,7 @@ const userMockList = [
   },
   {
     url: '/api/roles',
-    method: 'get',
+    type: 'get',
     response: () => {
       const list = roleList
       return {
@@ -100,4 +100,4 @@ const userMockList = [
   }
 ]
 
-export default userMockList
+module.exports = userMockList

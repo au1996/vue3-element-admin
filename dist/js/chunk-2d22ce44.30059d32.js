@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["chunk-2d22ce44"],{f4bb:function(n,t,c){"use strict";c.r(t);var e=c("7a23");const u={setup:function(n){var t=Object(e.O)("菜单1-1");return function(n,c){return Object(e.J)(),Object(e.l)("h1",null,Object(e.W)(t.value),1)}}};t.default=u}}]);
