@@ -8,8 +8,8 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :tada: init webpack version'
-git push origin master
+git commit -m 'feat: :construction_worker: update vue.config.js'
+git push origin webpack
 git subtree push --prefix dist origin gh-pages
 
 # 如果你要部署在 https://<USERNAME>.github.io

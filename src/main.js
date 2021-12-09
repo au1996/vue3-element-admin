@@ -3,14 +3,19 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/packages/theme-chalk/src/base.scss'
 import 'element-plus/lib/theme-chalk/index.css'
-import './styles/index.scss' // global css
+
+// global css
+import './styles/index.scss'
 
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import Directives from './directive'
 
-import './permission' // permission control
+// permission control
+import './permission'
+
+// utils
 import { DateFormat } from '@/utils/util'
 
 /**
@@ -25,8 +30,6 @@ if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
-
-console.log(66666666)
 
 const app = createApp(App)
 app.use(ElementPlus)

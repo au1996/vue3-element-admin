@@ -8,7 +8,7 @@ function resolve(dir) {
 
 module.exports = {
   lintOnSave: false,
-  productionSourceMap: false, // 线上环境取消map文件
+  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/vue3-element-admin/',
   devServer: {
     port: 3001,
     before: require('./mock/mock-server.js'),
