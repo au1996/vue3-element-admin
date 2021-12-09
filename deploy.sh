@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :construction_worker: update vue.config.js'
+git commit -m 'feat: :art: update'
 git push origin webpack
 git subtree push --prefix dist origin gh-pages
 

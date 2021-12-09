@@ -46,17 +46,9 @@ const editPossword = () => {
 }
 
 const loginOut = () => {
-  ElMessageBox.confirm('退出登录', '提示', {
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
-    type: 'warning'
+  store.dispatch('user/logout').then(() => {
+    router.push('/login')
   })
-    .then(() => {
-      store.dispatch('user/logout').then(() => {
-        router.push('/login')
-      })
-    })
-    .catch(() => {})
 }
 </script>
 
