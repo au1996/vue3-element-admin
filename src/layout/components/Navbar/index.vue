@@ -83,9 +83,9 @@ const loginOut = () => {
 
   :deep(.right-menu) {
     display: flex;
+    align-items: center;
     float: right;
     height: 100%;
-    align-items: center;
 
     &:focus {
       outline: none;
