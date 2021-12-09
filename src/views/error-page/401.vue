@@ -19,7 +19,7 @@
         </ul>
       </el-col>
       <el-col :span="12">
-        <img src="/img/401.gif" width="313" height="428" alt="Girl has dropped her ice cream." />
+        <img :src="require('@img/401.gif')" width="313" height="428" alt="Girl has dropped her ice cream." />
       </el-col>
     </el-row>
     <el-dialog v-model="dialogVisible" title="随便看">

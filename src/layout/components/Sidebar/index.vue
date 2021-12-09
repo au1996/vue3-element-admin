@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-container">
     <div class="logo" @click="$router.push('/')">
-      <img class="logo-img" :src="logoSrc" alt="logo" />
+      <img class="logo-img" :src="require('@img/logo.png')" alt="logo" />
       <transition name="el-zoom-in-center">
         <h1 v-show="opened" class="logo-text">Vue Element Admin</h1>
       </transition>
@@ -28,7 +28,6 @@ import { useStore } from 'vuex'
 import { constantRoutes } from '@/router'
 import { getRoles } from '@/utils/auth'
 import SidebarItem from './SidebarItem.vue'
-import logoSrc from '@img/logo.png'
 
 const roles = getRoles()
 const store = useStore()

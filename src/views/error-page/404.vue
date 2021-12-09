@@ -2,10 +2,10 @@
   <div class="wscn-http404-container">
     <div class="wscn-http404">
       <div class="pic-404">
-        <img class="pic-404__parent" src="/img/404.png" alt="404" />
-        <img class="pic-404__child left" src="/img/404_cloud.png" alt="404" />
-        <img class="pic-404__child mid" src="/img/404_cloud.png" alt="404" />
-        <img class="pic-404__child right" src="/img/404_cloud.png" alt="404" />
+        <img class="pic-404__parent" :src="require('@img/404.png')" alt="404" />
+        <img class="pic-404__child left" :src="require('@img/404_cloud.png')" alt="404" />
+        <img class="pic-404__child mid" :src="require('@img/404_cloud.png')" alt="404" />
+        <img class="pic-404__child right" :src="require('@img/404_cloud.png')" alt="404" />
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">OOPS!</div>
