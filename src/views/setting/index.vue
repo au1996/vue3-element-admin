@@ -1,7 +1,12 @@
 <template>
   <div class="setting-view">
     <el-tabs v-model="activeName">
-      <el-tab-pane v-for="item in list" :key="item.name" :label="item.label" :name="item.name"></el-tab-pane>
+      <el-tab-pane
+        v-for="item in list"
+        :key="item.name"
+        :label="item.label"
+        :name="item.name"
+      ></el-tab-pane>
     </el-tabs>
     <User v-if="activeName === 'user'" />
     <ShowDirective v-else />

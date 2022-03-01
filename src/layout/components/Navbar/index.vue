@@ -1,5 +1,5 @@
 <template>
-  <el-menu class="navbar" mode="horizontal">
+  <div class="navbar" mode="horizontal">
     <Hamburger class="hamburger-container" :is-active="opened" @toggleClick="toggleSideBar" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
@@ -9,7 +9,8 @@
       <el-dropdown class="avatar-container right-menu-item">
         <div class="avatar-wrapper">
           <img :src="avatar ? avatar : '/img/logo.png'" class="user-avatar" />
-          <i class="el-icon-caret-bottom" />
+          <Icon name="CaretBottom" />
+          <!-- <i class="el-icon-caret-bottom" /> -->
         </div>
         <template #dropdown>
           <el-dropdown-menu>
@@ -20,7 +21,7 @@
         </template>
       </el-dropdown>
     </div>
-  </el-menu>
+  </div>
 </template>
 
 <script setup>

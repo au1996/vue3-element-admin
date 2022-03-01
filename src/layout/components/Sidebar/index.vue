@@ -50,7 +50,11 @@ const filterRoutes = () => {
     }
   })
   for (let i = 0; i < routerList.length; i++) {
-    if (routerList[i].meta && routerList[i].meta.roles && !routerList[i].meta.roles.includes(roles)) {
+    if (
+      routerList[i].meta &&
+      routerList[i].meta.roles &&
+      !routerList[i].meta.roles.includes(roles)
+    ) {
       routerList.splice(i, 1)
       i--
     }
@@ -64,7 +68,10 @@ const filterRoutes = () => {
 const filterChildrens = (routers) => {
   const childrens = []
   routers.forEach((item) => {
-    if ((item.meta && !item.meta.roles) || (item.meta && item.meta.roles && item.meta.roles.includes(roles))) {
+    if (
+      (item.meta && !item.meta.roles) ||
+      (item.meta && item.meta.roles && item.meta.roles.includes(roles))
+    ) {
       childrens.push(item)
       if (item.children) {
         filterChildrens(item.children)

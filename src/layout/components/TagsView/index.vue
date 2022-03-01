@@ -1,5 +1,5 @@
 <template>
-  <div id="tags-view-container" class="tags-view-container">
+  <div id="tags-view-container">
     <ScrollPane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
       <router-link
         v-for="tag in visitedViews"
@@ -11,7 +11,12 @@
         @contextmenu.prevent="openMenu(tag, $event)"
       >
         {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        <Icon
+          v-if="!isAffix(tag)"
+          name="Close"
+          :size="10"
+          @click.prevent.stop="closeSelectedTag(tag)"
+        ></Icon>
       </router-link>
     </ScrollPane>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
@@ -24,8 +29,8 @@
 
 <script>
 import { defineComponent } from 'vue'
-import ScrollPane from './ScrollPane.vue'
 import path from 'path'
+import ScrollPane from './ScrollPane.vue'
 
 export default defineComponent({
   components: { ScrollPane },
@@ -182,7 +187,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.tags-view-container {
+#tags-view-container {
   width: 100%;
   height: 34px;
   background: #fff;
@@ -192,7 +197,8 @@ export default defineComponent({
   .tags-view-wrapper {
     .tags-view-item {
       position: relative;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       height: 26px;
       padding: 0 8px;
       margin-top: 4px;
@@ -258,12 +264,12 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-//reset element css of el-icon-close
 .tags-view-wrapper {
   .tags-view-item {
-    .el-icon-close {
+    .el-icon {
       width: 16px;
       height: 16px;
+      margin-left: 4px;
       text-align: center;
       vertical-align: 2px;
       border-radius: 50%;

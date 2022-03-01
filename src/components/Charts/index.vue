@@ -6,7 +6,13 @@
 import { defineProps, ref, onMounted } from 'vue'
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
-import { GridComponent, TitleComponent, TooltipComponent, PolarComponent, LegendComponent } from 'echarts/components'
+import {
+  GridComponent,
+  TitleComponent,
+  TooltipComponent,
+  PolarComponent,
+  LegendComponent
+} from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 
 echarts.use([

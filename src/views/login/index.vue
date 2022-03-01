@@ -6,15 +6,20 @@
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="用户名">
             <template #prepend>
-              <i class="el-icon-s-custom" />
+              <Icon name="UserFilled" />
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="param.password" placeholder="密码" :type="passwordType" @keyup.enter="submitForm">
+          <el-input
+            v-model="param.password"
+            placeholder="密码"
+            :type="passwordType"
+            @keyup.enter="submitForm"
+          >
             <template #prepend>
-              <i v-show="passwordLock" class="el-icon-lock" @click="switchPass" />
-              <i v-show="!passwordLock" class="el-icon-unlock" @click="switchPass" />
+              <Icon v-if="passwordLock" name="Lock" @click="switchPass" />
+              <Icon v-else name="Unlock" @click="switchPass" />
             </template>
           </el-input>
         </el-form-item>
@@ -33,6 +38,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
+import { Unlock } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const store = useStore()
