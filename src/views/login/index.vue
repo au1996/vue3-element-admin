@@ -4,9 +4,9 @@
       <div class="login-title">系统登录</div>
       <el-form ref="loginFormRef" class="login-form" :model="param" :rules="rules" status-icon>
         <el-form-item prop="username">
-          <el-input v-model="param.username" placeholder="用户名">
+          <el-input v-model="param.username" placeholder="用户名" size="large">
             <template #prepend>
-              <Icon name="UserFilled" />
+              <I name="UserFilled" size="14" />
             </template>
           </el-input>
         </el-form-item>
@@ -14,12 +14,13 @@
           <el-input
             v-model="param.password"
             placeholder="密码"
+            size="large"
             :type="passwordType"
             @keyup.enter="submitForm"
           >
             <template #prepend>
-              <Icon v-if="passwordLock" name="Lock" @click="switchPass" />
-              <Icon v-else name="Unlock" @click="switchPass" />
+              <I v-if="passwordLock" name="Lock" size="14" @click="switchPass" />
+              <I v-else name="Unlock" size="14" @click="switchPass" />
             </template>
           </el-input>
         </el-form-item>
@@ -38,7 +39,6 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
-import { Unlock } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const store = useStore()

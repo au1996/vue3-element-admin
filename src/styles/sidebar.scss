@@ -20,6 +20,11 @@
     background-color: #4a5a74;
     transition: width 0.28s;
 
+    .sidebar-icon {
+      margin-right: 15px;
+      margin-left: -5px;
+    }
+
     // reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
@@ -68,19 +73,19 @@
     }
 
     // menu hover
-    .submenu-title-noDropdown,
-    .el-submenu__title {
+    .sub-menu-title-noDropdown,
+    .el-sub-menu__title {
       &:hover {
         background-color: $menuHover !important;
       }
     }
 
-    .is-active > .el-submenu__title {
+    .is-active > .el-sub-menu__title {
       color: $subMenuActiveText !important;
     }
 
-    & .nest-menu .el-submenu > .el-submenu__title,
-    & .el-submenu .el-menu-item {
+    & .nest-menu .el-sub-menu > .el-sub-menu__title,
+    & .el-sub-menu .el-menu-item {
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
 
@@ -99,7 +104,7 @@
       margin-left: 54px;
     }
 
-    .submenu-title-noDropdown {
+    .sub-menu-title-noDropdown {
       position: relative;
       padding: 0 !important;
 
@@ -116,10 +121,10 @@
       }
     }
 
-    .el-submenu {
+    .el-sub-menu {
       overflow: hidden;
 
-      & > .el-submenu__title {
+      & > .el-sub-menu__title {
         padding: 0 !important;
 
         .svg-icon {
@@ -130,15 +135,15 @@
           margin-left: 19px;
         }
 
-        .el-submenu__icon-arrow {
+        .el-sub-menu__icon-arrow {
           display: none;
         }
       }
     }
 
     .el-menu--collapse {
-      .el-submenu {
-        & > .el-submenu__title {
+      .el-sub-menu {
+        & > .el-sub-menu__title {
           & > span {
             display: inline-block;
             width: 0;
@@ -151,16 +156,11 @@
     }
   }
 
-  .elIcon {
-    margin-right: 15px;
-    margin-left: -4px;
-  }
-
-  .el-menu--collapse .el-submenu__title .elIcon {
+  .el-menu--collapse .el-sub-menu__title .sidebar-icon {
     margin-left: 15px;
   }
 
-  .el-menu--collapse .el-menu .el-submenu {
+  .el-menu--collapse .el-menu .el-sub-menu {
     min-width: $sideBarWidth !important;
   }
 
@@ -205,7 +205,7 @@
     }
   }
 
-  .nest-menu .el-submenu > .el-submenu__title,
+  .nest-menu .el-sub-menu > .el-sub-menu__title,
   .el-menu-item {
     &:hover {
       // you can use $subMenuHover

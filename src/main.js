@@ -56,6 +56,6 @@ const Icon = (props) => {
   )
 }
 
-app.component('Icon', Icon)
+app.component('I', Icon)
 
 export default app

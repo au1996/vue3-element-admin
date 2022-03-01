@@ -6,15 +6,15 @@
       :index="nav.path"
       :class="{ 'submenu-title-noDropdown': !nav.isNest }"
     >
-      <i v-if="nav.meta.icon" :class="nav.meta.icon" class="elIcon" />
+      <I v-if="nav.meta.icon" :name="nav.meta.icon" size="18" class="sidebar-icon" />
       <template #title>
         <span>{{ nav.meta.title }}</span>
       </template>
     </el-menu-item>
-    <el-submenu v-else :index="nav.path">
+    <el-sub-menu v-else :index="nav.path">
       <!-- 二级菜单 -->
       <template #title>
-        <i v-if="nav.meta.icon" :class="nav.meta.icon" class="elIcon" />
+        <I v-if="nav.meta.icon" :name="nav.meta.icon" size="18" class="sidebar-icon" />
         <span>{{ nav.meta.title }}</span>
       </template>
       <!-- 三级菜单 -->
@@ -32,7 +32,7 @@
           </template>
         </el-menu-item>
       </div>
-    </el-submenu>
+    </el-sub-menu>
   </div>
 </template>
 
