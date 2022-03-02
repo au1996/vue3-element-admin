@@ -4,9 +4,6 @@ import ElementPlus, { ElIcon } from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as Icons from '@element-plus/icons-vue'
 
-// import 'element-plus/packages/theme-chalk/src/base.scss'
-// import 'element-plus/lib/theme-chalk/index.css'
-
 // global css
 import './styles/index.scss'
 
