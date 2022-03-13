@@ -1,5 +1,5 @@
 <template>
-  <div class="errPage-container">
+  <div class="error-page-401">
     <el-button icon="el-icon-arrow-left" class="pan-back-btn" @click="back"> 返回 </el-button>
     <el-row>
       <el-col :span="12">
@@ -52,7 +52,7 @@ const back = () => {
 </script>
 
 <style lang="scss" scoped>
-.errPage-container {
+.error-page-401 {
   width: 800px;
   max-width: 100%;
   padding: 100px 0;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="menu-view">
     <h1>{{ title }}</h1>
     <router-view v-slot="{ Component }">
       <component :is="Component" />

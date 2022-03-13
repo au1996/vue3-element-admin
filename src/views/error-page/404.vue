@@ -1,5 +1,5 @@
 <template>
-  <div class="wscn-http404-container">
+  <div class="error-page-404">
     <div class="wscn-http404">
       <div class="pic-404">
         <img class="pic-404__parent" :src="require('@img/404.png')" alt="404" />
@@ -29,7 +29,7 @@ const message = 'The webmaster said that you can not enter this page...'
 </script>
 
 <style lang="scss" scoped>
-.wscn-http404-container {
+.error-page-404 {
   position: absolute;
   top: 40%;
   left: 50%;

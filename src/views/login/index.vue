@@ -1,5 +1,5 @@
 <template>
-  <div class="login-wrap">
+  <div class="login-view">
     <div class="login-content">
       <div class="login-title">系统登录</div>
       <el-form ref="loginFormRef" class="login-form" :model="param" :rules="rules" status-icon>
@@ -88,7 +88,7 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-.login-wrap {
+.login-view {
   position: relative;
   width: 100%;
   height: 100%;
