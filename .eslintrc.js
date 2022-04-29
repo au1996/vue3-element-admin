@@ -18,6 +18,7 @@ module.exports = {
   },
   // eslint:recommended:表示引入eslint的核心功能，并且报告一些常见的共同错误。
   extends: ['eslint:recommended', 'plugin:vue/vue3-recommended'],
+  plugins: ['prettier'],
   rules: {
     'vue/html-self-closing': 0,
     // 设置每行最大属性数
