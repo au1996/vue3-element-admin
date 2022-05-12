@@ -31,20 +31,23 @@
         <p class="login-tips">用户名: editor 密码: 456</p>
       </el-form>
     </div>
+    <!-- 星际迷航背景 -->
+    <Star />
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
+import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { ElMessage } from 'element-plus'
+import Star from './Star.vue'
 
 const router = useRouter()
 const store = useStore()
 
 const btnLoading = ref(false)
-const loginFormRef = ref(null)
+const loginFormRef = ref()
 const passwordLock = ref(true)
 const passwordType = ref('password')
 
@@ -110,6 +113,7 @@ const submitForm = async () => {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 1;
   width: 350px;
   margin: -190px 0 0 -175px;
   overflow: hidden;
