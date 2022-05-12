@@ -1,6 +1,15 @@
 import { ElMessage } from 'element-plus'
 import { user_login, user_logout, get_user_info } from '@/api/user'
-import { getToken, setToken, getRoles, setRoles, getName, setName, getAvatar, setAvatar } from '@/utils/auth'
+import {
+  getToken,
+  setToken,
+  getRoles,
+  setRoles,
+  getName,
+  setName,
+  getAvatar,
+  setAvatar
+} from '@/utils/auth'
 
 const state = {
   token: getToken(),
@@ -38,7 +47,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       user_login(userInfo)
         .then((res) => {
-          console.log(11, res)
           if (res.token) {
             commit('SET_TOKEN', res.token)
             commit('SET_ROLES', res.role)

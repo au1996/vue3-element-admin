@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { getToken, removeToken, removeRoles, removeName, removeAvatar } from './auth'
+import { getToken, removeToken, removeRoles, removeName, removeAvatar } from '@/utils/auth'
 
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API,
@@ -30,7 +31,10 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(
-  (response) => response.data,
+  (response) => {
+    console.log(111, response)
+    return response.data
+  },
   (error) => {
     if (error.response && error.response.status === 401) {
       removeToken()
@@ -46,5 +50,28 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+
+export function useApi(api) {
+  const loading = ref(false)
+
+  const fetch_resource = (params) => {
+    loading.value = true
+
+    return api(params)
+      .then((res) => {
+        return res
+      })
+      .finally(() => {
+        setTimeout(() => {
+          loading.value = false
+        }, 500)
+      })
+  }
+
+  return {
+    loading,
+    fetch_resource
+  }
+}
 
 export default service

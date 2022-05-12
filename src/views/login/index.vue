@@ -2,7 +2,7 @@
   <div class="login-view">
     <div class="login-content">
       <div class="login-title">系统登录</div>
-      <el-form ref="loginFormRef" class="login-form" :model="param" :rules="rules" status-icon>
+      <el-form ref="loginFormRef" class="login-form" :model="param" :rules="rules">
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="用户名" size="large">
             <template #prepend>

@@ -1,9 +1,11 @@
 <template>
   <div class="user-manage-view">
     <div class="header-box">
-      <el-button type="primary" icon="el-icon-plus" @click="showDialog">添加用户</el-button>
+      <el-button type="primary" @click="showDialog">
+        <I name="Plus" class="mr-4"></I>添加用户
+      </el-button>
     </div>
-    <el-table v-loading="tabelLoading" border :data="tableList">
+    <el-table v-loading="tabelLoading" :data="tableList" border>
       <el-table-column prop="username" label="账号" />
       <el-table-column prop="password" label="密码" />
       <el-table-column prop="role" label="角色">
@@ -25,18 +27,12 @@
       </el-table-column>
       <el-table-column label="操作" width="200">
         <template #default="{ row }">
-          <el-button
-            type="primary"
-            size="small"
-            icon="el-icon-edit"
-            @click="showDialog(2, row)"
-          >修改</el-button>
-          <el-button
-            type="danger"
-            size="small"
-            icon="el-icon-delete"
-            @click="deleteUser(row)"
-          >删除</el-button>
+          <el-button type="primary" size="small" @click="showDialog(2, row)">
+            <I name="Edit" size="small" class="mr-4"></I>修改
+          </el-button>
+          <el-button type="danger" size="small" @click="deleteUser(row)">
+            <I name="Delete" size="small" class="mr-4"></I>删除
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -68,11 +64,9 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button
-            type="primary"
-            :disabled="formLoading"
-            @click="addOrUpdateUser"
-          >确 定</el-button>
+          <el-button type="primary" :disabled="formLoading" @click="addOrUpdateUser">
+            确 定
+          </el-button>
         </span>
       </template>
     </el-dialog>
@@ -80,18 +74,17 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, onBeforeMount } from 'vue'
+import { ref, reactive, inject } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
+import { useApi } from '@/api/Axios'
 import { get_user_list, add_user, get_roles, update_user_info, delete_user_info } from '@/api/user'
 
+const roleList = reactive([])
 const DateFormat = inject('$DateFormat')
 const dialogFlag = ref(1)
 const dialogVisible = ref(false)
-const tabelLoading = ref(false)
 const formLoading = ref(false)
 const userFormRef = ref(null)
-const roleList = reactive([])
-const tableList = reactive([])
 const userForm = reactive({
   username: '',
   password: '',
@@ -100,25 +93,32 @@ const userForm = reactive({
   introduction: ''
 })
 
-onBeforeMount(() => {
-  getTableList()
-  getRoles()
-})
-
 /**
  * 获取表格列表
  */
-const getTableList = () => {
-  tabelLoading.value = true
-  get_user_list()
-    .then((res) => {
-      tableList.length = 0
-      tableList.push(...res.list)
-    })
-    .finally(() => {
-      tabelLoading.value = false
-    })
+// const getTableList = () => {
+//   tabelLoading.value = true
+//   get_user_list()
+//     .then((res) => {
+//       tableList.length = 0
+//       tableList.push(...res.list)
+//     })
+//     .finally(() => {
+//       tabelLoading.value = false
+//     })
+// }
+
+const tableList = reactive([])
+const { loading: tabelLoading, fetch_resource } = useApi(get_user_list)
+
+const getTableData = () => {
+  fetch_resource().then((res) => {
+    tableList.length = 0
+    tableList.push(...res.list)
+  })
 }
+
+getTableData()
 
 /**
  * 获取角色列表
@@ -129,6 +129,8 @@ const getRoles = () => {
     roleList.push(...res.list)
   })
 }
+
+getRoles()
 
 /**
  * 获取角色名
@@ -168,7 +170,7 @@ const addOrUpdateUser = () => {
   if (dialogFlag.value === 2) {
     update_user_info({ ...userForm })
       .then(() => {
-        getTableList()
+        getTableData()
         dialogVisible.value = false
       })
       .finally(() => {
@@ -177,7 +179,7 @@ const addOrUpdateUser = () => {
   } else {
     add_user({ ...userForm })
       .then(() => {
-        getTableList()
+        getTableData()
         dialogVisible.value = false
       })
       .finally(() => {
