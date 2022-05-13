@@ -1,4 +1,8 @@
 export default {
+  /**
+   * @type {string}
+   * @description
+   */
   title: 'Vue3 Element Admin',
 
   /**
