@@ -8,7 +8,7 @@ npm run build
 
 # 部署
 git add .
-git commit -m 'feat: :sparkles: axios add useApi'
+git commit -m 'feat: :arrow_up: upgrade element-plus v2.2.0'
 git push origin webpack
 git subtree push --prefix dist origin gh-pages
 
