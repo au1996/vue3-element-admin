@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: [webpack] # 分支有 push 时触发
+    branches: [master, webpack] # 分支有 push 时触发
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
           node-version: '14.x'
 
       - name: Install
-        run: yarn install # 安装依赖
+        run: npm install # 安装依赖
 
       - name: Build
         run: npm run build # 打包
