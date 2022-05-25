@@ -31,8 +31,6 @@
         <p class="login-tips">用户名: editor 密码: 456</p>
       </el-form>
     </div>
-    <!-- 星际穿越背景 -->
-    <!-- <Star /> -->
   </div>
 </template>
 
@@ -41,7 +39,6 @@ import { ref, reactive } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-// import Star from './Star.vue'
 
 const router = useRouter()
 const store = useStore()
