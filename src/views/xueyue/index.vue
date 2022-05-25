@@ -1,6 +1,6 @@
 <template>
   <div class="xueyueView">
-    <h1 class="title">雪月测试 scss 全局变量test1</h1>
+    <h1 class="title">雪月测试 scss 全局变量test2</h1>
   </div>
 </template>
 
