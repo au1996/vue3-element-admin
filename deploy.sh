@@ -5,7 +5,7 @@ set -e
 
 # 部署
 git add .
-git commit -m 'feat: :zap: add workflows'
+git commit -m 'chore: update tests/unit/utils'
 git push origin webpack
 
 cd -
