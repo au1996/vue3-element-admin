@@ -5,7 +5,7 @@ set -e
 
 # 部署
 git add .
-git commit -m 'chore: update tests/unit/utils'
+git commit -m 'build: update eslint'
 git push origin webpack
 
 cd -
