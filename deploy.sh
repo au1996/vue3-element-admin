@@ -5,7 +5,7 @@ set -e
 
 # 部署
 git add .
-git commit -m 'chore: update'
+git commit -m 'chore: add redirect'
 git push origin webpack
 
 cd -
