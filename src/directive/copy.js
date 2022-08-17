@@ -1,41 +1,64 @@
-import { ElMessage } from 'element-plus'
+import Clipboard from 'clipboard'
 
 export default {
-  mounted(el, { value }) {
-    el.$value = value
-    el.handler = () => {
-      if (!el.$value) {
-        ElMessage.error('内容为空')
-        return
-      }
-
-      let content = el.$value
-      if (typeof el.$value === 'function') {
-        content = el.$value()
-      }
-
-      const textarea = document.createElement('textarea')
-      textarea.readOnly = 'readonly'
-      textarea.style.position = 'absolute'
-      textarea.style.left = '-9999px'
-      textarea.value = content
-      document.body.appendChild(textarea)
-      textarea.select()
-      const result = document.execCommand('Copy')
-
-      if (result) {
-        ElMessage.success('复制成功：' + content)
-      }
-
-      document.body.removeChild(textarea)
+  beforeMount(el, { value, arg }) {
+    switch (arg) {
+      case 'success':
+        el.successCallback = value
+        break
+      case 'error':
+        el.errorCallback = value
+        break
+      default:
+        el.clipboardInstance = new Clipboard(el, {
+          text() {
+            return value
+          },
+          action() {
+            return arg === 'cut' ? 'cut' : 'copy'
+          }
+        })
+        el.clipboardInstance.on('success', (e) => {
+          el.successCallback && el.successCallback(e)
+        })
+        el.clipboardInstance.on('error', (e) => {
+          el.errorCallback && el.errorCallback(e)
+        })
+        break
     }
-
-    el.addEventListener('click', el.handler)
   },
-  updated(el, { value }) {
-    el.$value = value
+  beforeUpdate(el, { value, arg }) {
+    switch (arg) {
+      case 'success':
+        el.successCallback = value
+        break
+      case 'error':
+        el.errorCallback = value
+        break
+      default:
+        el.clipboardInstance = new Clipboard(el, {
+          text() {
+            return value
+          },
+          action() {
+            return arg === 'cut' ? 'cut' : 'copy'
+          }
+        })
+        break
+    }
   },
-  unmounted(el) {
-    el.removeEventListener('click', el.handler)
+  beforeUnmount(el, { arg }) {
+    switch (arg) {
+      case 'success':
+        el.successCallback = null
+        break
+      case 'error':
+        el.errorCallback = null
+        break
+      default:
+        el.clipboardInstance && el.clipboardInstance.destroy()
+        el.clipboardInstance = null
+        break
+    }
   }
 }
