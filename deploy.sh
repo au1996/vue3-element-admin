@@ -5,9 +5,6 @@ set -e
 
 # 部署
 git add .
-git commit -m 'feat: :zap: add workflows'
+git commit -m 'chore: update README'
 git push origin master
-# git subtree push --prefix dist origin gh-pages
-
-cd -
 
