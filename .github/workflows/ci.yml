@@ -2,7 +2,7 @@ name: ci
 
 on:
   push:
-    branches: [master, webpack]
+    branches: [webpack]
 
 jobs:
   deploy:
