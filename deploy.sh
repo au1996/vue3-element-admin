@@ -5,7 +5,7 @@ set -e
 
 # 部署
 git add .
-git commit -m 'chore: add clipboard'
+git commit -m 'chore: update README'
 git push origin webpack
 
 cd -
