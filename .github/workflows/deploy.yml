@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: [master, webpack] # 分支有 push 时触发
+    branches: [webpack] # 分支有 push 时触发
 
 jobs:
   deploy:
@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js v14.x
+      - name: Setup Node.js v16.x
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16.x'
 
       - name: Install
         run: yarn install # 安装依赖
