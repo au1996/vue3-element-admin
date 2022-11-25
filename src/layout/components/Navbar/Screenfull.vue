@@ -1,30 +1,26 @@
 <template>
-  <div class="screenfull-box" @click="click">
-    <i class="el-icon-full-screen" />
-  </div>
+  <el-tooltip effect="dark" :content="tip" placement="bottom">
+    <I class="screenfull-box" name="FullScreen" :size="16" @click="onToggle" />
+  </el-tooltip>
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount, onMounted } from 'vue'
+import { ref, computed, onBeforeUnmount, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import screenfull from 'screenfull'
 
 const isFullscreen = ref(false)
 
-onBeforeUnmount(() => {
-  destroy()
+const tip = computed(() => {
+  if (isFullscreen.value) {
+    return '取消全屏'
+  }
+  return '全屏'
 })
 
-onMounted(() => {
-  init()
-})
-
-const click = () => {
+const onToggle = () => {
   if (!screenfull.isEnabled) {
-    ElMessage({
-      message: 'you browser can not work',
-      type: 'warning'
-    })
+    ElMessage.warning('you browser can not work')
     return false
   }
   screenfull.toggle()
@@ -46,18 +42,19 @@ const destroy = () => {
     screenfull.off('change', change)
   }
 }
+
+onMounted(() => {
+  init()
+})
+
+onBeforeUnmount(() => {
+  destroy()
+})
 </script>
 
 <style scoped>
 .screenfull-box {
-  display: flex;
-  justify-content: center;
-  width: 20px;
   margin: 0 10px;
   cursor: pointer;
-}
-
-.el-icon-full-screen {
-  font-size: 20px;
 }
 </style>

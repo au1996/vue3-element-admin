@@ -8,7 +8,7 @@ import request from './Axios'
 export function user_login(data) {
   return request({
     url: '/api/login',
-    method: 'post',
+    method: 'POST',
     data
   })
 }
@@ -21,7 +21,7 @@ export function user_login(data) {
 export function user_logout(params) {
   return request({
     url: '/api/logout',
-    method: 'get',
+    method: 'GET',
     params
   })
 }
@@ -34,7 +34,7 @@ export function user_logout(params) {
 export function add_user(data) {
   return request({
     url: '/api/user',
-    method: 'post',
+    method: 'POST',
     data
   })
 }
@@ -47,7 +47,7 @@ export function add_user(data) {
 export function get_user_info(id) {
   return request({
     url: `/api/user/${id}`,
-    method: 'get'
+    method: 'GET'
   })
 }
 
@@ -59,7 +59,7 @@ export function get_user_info(id) {
 export function update_user_info(data) {
   return request({
     url: `/api/user/${data.id}`,
-    method: 'put',
+    method: 'PUT',
     data
   })
 }
@@ -72,7 +72,7 @@ export function update_user_info(data) {
 export function delete_user_info(id) {
   return request({
     url: `/api/user/${id}`,
-    method: 'delete'
+    method: 'DELETE'
   })
 }
 
@@ -84,7 +84,7 @@ export function delete_user_info(id) {
 export function get_user_list(params) {
   return request({
     url: '/api/users',
-    method: 'get',
+    method: 'GET',
     params
   })
 }
@@ -97,7 +97,7 @@ export function get_user_list(params) {
 export function get_roles(params) {
   return request({
     url: '/api/roles',
-    method: 'get',
+    method: 'GET',
     params
   })
 }

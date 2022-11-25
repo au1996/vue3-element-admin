@@ -7,10 +7,8 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-.xueyue-view {
-  .title {
-    color: $yellow;
-    background-color: $panGreen;
-  }
+.title {
+  color: $yellow;
+  background-color: $panGreen;
 }
 </style>

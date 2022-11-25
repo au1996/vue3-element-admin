@@ -10,7 +10,7 @@ configure({ showSpinner: false }) // NProgress Configuration
 const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
-  console.log('beforeEach: from', from)
+  // console.log('beforeEach: from', from)
 
   // cancel axios request
   if (Array.isArray(window.axiosCancelTokenList)) {
@@ -34,7 +34,10 @@ router.beforeEach(async (to, from, next) => {
       if (routes.length) {
         // Permission filtering
         const toRoute = routes[0]
-        if ((toRoute.meta && !toRoute.meta.roles) || (toRoute.meta && toRoute.meta.roles.includes(roles))) {
+        if (
+          (toRoute.meta && !toRoute.meta.roles) ||
+          (toRoute.meta && toRoute.meta.roles.includes(roles))
+        ) {
           next()
         } else {
           next('/401')

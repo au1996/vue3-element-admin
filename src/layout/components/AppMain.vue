@@ -1,12 +1,12 @@
 <template>
   <section class="app-main">
-    <router-view v-slot="{ Component }">
-      <transition name="fade-transform" mode="out-in">
+    <transition name="fade-transform" mode="out-in">
+      <router-view v-slot="{ Component }">
         <keep-alive>
           <component :is="Component" />
         </keep-alive>
-      </transition>
-    </router-view>
+      </router-view>
+    </transition>
   </section>
 </template>
 

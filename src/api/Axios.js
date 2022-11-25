@@ -32,7 +32,6 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   (response) => {
-    console.log(111, response)
     return response.data
   },
   (error) => {
