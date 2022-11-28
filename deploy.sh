@@ -5,6 +5,6 @@ set -e
 
 # 部署
 git add .
-git commit -m 'feat: add china map'
+git commit -m 'chore: gitignore dist'
 git push origin webpack
 
