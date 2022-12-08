@@ -1,6 +1,9 @@
 import request from './Axios'
 
-const API = 'https://www.xueyueob.cn'
+const API =
+  process.env.NODE_ENV === 'development'
+    ? '/api/areas_v3/bound/geojson'
+    : 'https://www.xueyueob.cn/network/aliyun/map'
 
 /**
  * 获取地图JSON
@@ -10,7 +13,7 @@ const API = 'https://www.xueyueob.cn'
 export function get_map_json(params) {
   return request({
     // url: 'https://geo.datav.aliyun.com/areas_v3/bound/geojson',
-    url: `${API}/network/aliyun/map`,
+    url: API,
     method: 'GET',
     params
   })

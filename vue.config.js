@@ -10,11 +10,11 @@ module.exports = {
   lintOnSave: false,
   publicPath: process.env.NODE_ENV === 'development' ? '/' : '/vue3-element-admin/',
   devServer: {
-    port: 3002,
+    port: 3000,
     before: require('./mock/mock-server.js'),
     proxy: {
       '/api': {
-        target: 'http://admin.xueyueob.cn/api',
+        target: 'https://geo.datav.aliyun.com',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
