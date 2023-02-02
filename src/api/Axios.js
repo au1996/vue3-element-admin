@@ -1,6 +1,8 @@
 import axios from 'axios'
-import { ref } from 'vue'
+
 import { ElMessage } from 'element-plus'
+import store from '@/store'
+import { AXIOS_WHITE_CANCEL_LIST } from '@/config/base'
 import { getToken, removeToken, removeRoles, removeName, removeAvatar } from '@/utils/auth'
 
 const service = axios.create({
@@ -11,19 +13,34 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
+    const method = config.method
+    const url = config.url
     const token = getToken()
+
     // 如果有token 就携带tokon
     if (token) {
       config.headers['Authorization'] = 'Bearer__' + token
     }
-    // 加上取消请求
-    config.cancelToken = new axios.CancelToken((cancel) => {
-      if (Array.isArray(window.axiosCancelTokenList)) {
-        window.axiosCancelTokenList.push(cancel)
-      } else {
-        window.axiosCancelTokenList = [cancel]
+
+    // url是否在白名单中
+    const flag = AXIOS_WHITE_CANCEL_LIST.some((item) => {
+      if (method === 'GET') {
+        return url.indexOf(item) === 0
       }
+      return url === item
     })
+
+    // 如果不在白名单中
+    if (!flag) {
+      // 取消上一个重复请求
+      store.commit('axios/deleteCancel', url)
+
+      // 加上取消请求
+      config.cancelToken = new axios.CancelToken((cancel) => {
+        store.commit('axios/addCancel', { url, cancel })
+      })
+    }
+
     return config
   },
   (error) => Promise.reject(error)
@@ -35,6 +52,13 @@ service.interceptors.response.use(
     return response.data
   },
   (error) => {
+    // 取消请求不执行后面操作
+    if (axios.isCancel(error)) {
+      return new Promise(() => {
+        console.warn('axios cancel')
+      })
+    }
+
     if (error.response && error.response.status === 401) {
       removeToken()
       removeRoles()
@@ -42,35 +66,11 @@ service.interceptors.response.use(
       removeAvatar()
       location.reload()
     }
-    ElMessage({
-      type: 'error',
-      message: error.message
-    })
+
+    ElMessage.error(error.message)
+
     return Promise.reject(error)
   }
 )
-
-export function useApi(api) {
-  const loading = ref(false)
-
-  const fetch_resource = (params) => {
-    loading.value = true
-
-    return api(params)
-      .then((res) => {
-        return res
-      })
-      .finally(() => {
-        setTimeout(() => {
-          loading.value = false
-        }, 500)
-      })
-  }
-
-  return {
-    loading,
-    fetch_resource
-  }
-}
 
 export default service

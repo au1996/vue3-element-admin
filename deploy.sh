@@ -5,6 +5,6 @@ set -e
 
 # 部署
 git add .
-git commit -m 'chore: update aliyun api'
+git commit -m 'chore: update axios cancel api'
 git push origin webpack
 

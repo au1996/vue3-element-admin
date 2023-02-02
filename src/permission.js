@@ -1,7 +1,7 @@
 import { configure, start, done } from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-
 import router from './router'
+import store from './store'
 import { getToken, getRoles } from './utils/auth' // get token from cookie
 import getPageTitle from './utils/get-page-title'
 
@@ -13,10 +13,8 @@ router.beforeEach(async (to, from, next) => {
   // console.log('beforeEach: from', from)
 
   // cancel axios request
-  if (Array.isArray(window.axiosCancelTokenList)) {
-    window.axiosCancelTokenList.forEach((e) => e('cancel request'))
-    window.axiosCancelTokenList = []
-  }
+  store.commit('axios/clearCancelList')
+
   // start progress bar
   start()
   // determine whether the user has logged in

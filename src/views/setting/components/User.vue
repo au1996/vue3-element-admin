@@ -76,7 +76,7 @@
 <script setup>
 import { ref, reactive, inject } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
-import { useApi } from '@/api/Axios'
+import useApi from '@/hooks/useApi'
 import { get_user_list, add_user, get_roles, update_user_info, delete_user_info } from '@/api/user'
 
 const roleList = reactive([])
