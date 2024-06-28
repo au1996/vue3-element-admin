@@ -3,7 +3,7 @@ import request from './Axios'
 const API =
   process.env.NODE_ENV === 'development'
     ? '/api/areas_v3/bound/geojson'
-    : 'https://www.xueyueob.cn/network/aliyun/map'
+    : 'https://www.xyob.cn/network/aliyun/map'
 
 /**
  * 获取地图JSON
