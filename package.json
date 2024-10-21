@@ -10,7 +10,6 @@
     "lint:js-fix": "eslint \"{src,mock}/**/*.{vue,js}\" --fix",
     "lint:css": "stylelint \"**/*.{vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:css-fix": "stylelint \"**/*.{vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/ --fix",
-    "test": "jest",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -43,13 +42,11 @@
     "@vue/test-utils": "2.0.0-rc.6",
     "autoprefixer": "9.8.6",
     "babel-eslint": "10.1.0",
-    "babel-jest": "26.6.3",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.21.0",
     "eslint-plugin-vue": "7.7.0",
     "husky": "6.0.0",
-    "jest": "25.0.0",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
     "rollup-plugin-visualizer": "5.3.4",
@@ -59,8 +56,7 @@
     "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.1.0",
     "vite": "2.3.8",
-    "vite-plugin-mock": "2.3.0",
-    "vue-jest": "5.0.0-alpha.7"
+    "vite-plugin-mock": "2.3.0"
   },
   "license": "MIT",
   "config": {
