@@ -1,4 +1,4 @@
-const componentFiles = import.meta.globEager('./*.js')
+const componentFiles = import.meta.glob('./*.js', { eager: true })
 const pathList = []
 
 for (const path in componentFiles) {

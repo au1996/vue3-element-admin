@@ -4,23 +4,24 @@
     <el-menu-item
       v-if="!nav.children || !nav.children.length"
       :index="nav.path"
-      :class="{ 'submenu-title-noDropdown': !nav.isNest }"
+      :class="{ 'sub-menu-title-noDropdown': !nav.isNest }"
     >
-      <i v-if="nav.meta.icon" :class="nav.meta.icon" class="elIcon" />
+      <Icon v-if="nav.meta.icon" :name="nav.meta.icon" size="18" class="sidebar-icon" />
       <template #title>
         <span>{{ nav.meta.title }}</span>
       </template>
     </el-menu-item>
-    <el-submenu v-else :index="nav.path">
+    <el-sub-menu v-else :index="nav.path">
       <!-- 二级菜单 -->
       <template #title>
-        <i v-if="nav.meta.icon" :class="nav.meta.icon" class="elIcon" />
+        <Icon v-if="nav.meta.icon" :name="nav.meta.icon" size="18" class="sidebar-icon" />
         <span>{{ nav.meta.title }}</span>
       </template>
       <!-- 三级菜单 -->
       <div v-for="child in nav.children" :key="child.path">
         <SidebarItem
           v-if="child.children && child.children.length"
+          :key="child.path"
           :index="child.path"
           :is-nest="true"
           :nav="child"
@@ -32,12 +33,12 @@
           </template>
         </el-menu-item>
       </div>
-    </el-submenu>
+    </el-sub-menu>
   </div>
 </template>
 
 <script setup>
-import { defineProps, toRefs } from 'vue'
+import { toRefs } from 'vue'
 
 const props = defineProps({
   nav: {

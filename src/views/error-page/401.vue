@@ -34,7 +34,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
-const ewizardClap = 'https://au1996.gitee.io/blog/images/avatar.png'
+const ewizardClap = 'https://au1996.github.io/blog/images/logo.png'
 const dialogVisible = ref(false)
 
 const back = () => {

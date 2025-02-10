@@ -8,23 +8,23 @@
         <img class="pic-404__child right" src="/img/404_cloud.png" alt="404" />
       </div>
       <div class="bullshit">
-        <div class="bullshit__oops">OOPS!</div>
+        <div class="bullshit__oops">哎呀!</div>
         <div class="bullshit__info">
-          All rights reserved
-          <a class="blue" href="https://au1996.gitee.io/blog/" target="_blank">雪月</a>
+          版权所有
+          <a class="blue" href="https://au1996.github.io/blog/" target="_blank">雪月欧巴</a>
         </div>
         <div class="bullshit__headline">{{ message }}</div>
         <div class="bullshit__info">
-          Please check that the URL you entered is correct, or click the button below to return to the homepage.
+          <p>请检查您输入的网址是否正确</p>
         </div>
-        <div class="bullshit__return-home" @click="$router.replace('/')">Back to home</div>
+        <div class="bullshit__return-home" @click="$router.replace('/')">返回主页</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const message = 'The webmaster said that you can not enter this page...'
+const message = '网站管理员说您无法进入该页面...'
 </script>
 
 <style lang="scss" scoped>

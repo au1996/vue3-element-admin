@@ -2,7 +2,7 @@
   <div class="sidebar-container">
     <div class="logo" @click="$router.push('/')">
       <img class="logo-img" :src="logoSrc" alt="logo" />
-      <transition name="el-zoom-in-center">
+      <transition name="fade-transform" mode="out-in">
         <h1 v-show="opened" class="logo-text">Vue Element Admin</h1>
       </transition>
     </div>
@@ -12,6 +12,7 @@
         :default-active="$route.path"
         :collapse="isCollapse"
         :show-timeout="200"
+        class="v-enter-to"
         text-color="#fff"
         background-color="#4a5a74"
         active-text-color="#409EFF"

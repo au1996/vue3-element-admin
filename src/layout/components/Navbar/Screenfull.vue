@@ -1,6 +1,6 @@
 <template>
-  <div class="screenfull-box" @click="click">
-    <i class="el-icon-full-screen" />
+  <div class="box" @click="click">
+    <Icon name="FullScreen" size="18" />
   </div>
 </template>
 
@@ -10,14 +10,6 @@ import { ElMessage } from 'element-plus'
 import screenfull from 'screenfull'
 
 const isFullscreen = ref(false)
-
-onBeforeUnmount(() => {
-  destroy()
-})
-
-onMounted(() => {
-  init()
-})
 
 const click = () => {
   if (!screenfull.isEnabled) {
@@ -46,18 +38,22 @@ const destroy = () => {
     screenfull.off('change', change)
   }
 }
+
+onMounted(() => {
+  init()
+})
+
+onBeforeUnmount(() => {
+  destroy()
+})
 </script>
 
 <style scoped>
-.screenfull-box {
+.box {
   display: flex;
   justify-content: center;
   width: 20px;
   margin: 0 10px;
   cursor: pointer;
-}
-
-.el-icon-full-screen {
-  font-size: 20px;
 }
 </style>

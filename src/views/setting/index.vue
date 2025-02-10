@@ -1,7 +1,12 @@
 <template>
   <div class="setting-view">
     <el-tabs v-model="activeName">
-      <el-tab-pane v-for="item in list" :key="item.name" :label="item.label" :name="item.name"></el-tab-pane>
+      <el-tab-pane
+        v-for="item in list"
+        :key="item.name"
+        :label="item.label"
+        :name="item.name"
+      ></el-tab-pane>
     </el-tabs>
     <User v-if="activeName === 'user'" />
     <ShowDirective v-else />
@@ -10,8 +15,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import User from './components/User.vue'
-import ShowDirective from '@/components/ShowDirective/index.vue'
+import User from './User.vue'
+import ShowDirective from './ShowDirective/index.vue'
 
 const activeName = ref('user')
 const list = [

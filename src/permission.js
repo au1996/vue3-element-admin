@@ -10,7 +10,7 @@ configure({ showSpinner: false }) // NProgress Configuration
 const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
-  console.log('beforeEach: from', from)
+  // console.log('beforeEach: from', from)
 
   // cancel axios request
   if (Array.isArray(window.axiosCancelTokenList)) {

@@ -31,19 +31,19 @@ export const constantRoutes = [
         path: '/home',
         component: () => import('@/views/home/index.vue'),
         name: 'Home',
-        meta: { title: '首页', icon: 'el-icon-s-home', affix: true }
+        meta: { title: '首页', icon: 'HomeFilled', affix: true }
       },
       {
         path: '/setting',
         component: () => import('@/views/setting/index.vue'),
         name: 'Setting',
-        meta: { title: '设置', icon: 'el-icon-s-tools', roles: ['admin'] }
+        meta: { title: '设置', icon: 'Tools', roles: ['admin'] }
       },
       {
         path: '/menu',
         name: 'Menu',
         component: () => import('@/views/menu/index.vue'),
-        meta: { title: '菜单', icon: 'el-icon-menu', roles: ['admin', 'editor'] },
+        meta: { title: '菜单', icon: 'Menu', roles: ['admin', 'editor'] },
         redirect: '/menu2',
         children: [
           {
@@ -76,16 +76,16 @@ export const constantRoutes = [
         ]
       },
       {
-        path: '/star',
-        component: () => import('@/views/star/index.vue'),
-        name: 'Star',
-        meta: { title: '图表', icon: 'el-icon-s-data', roles: ['admin', 'editor'] }
+        path: '/chart',
+        component: () => import('@/views/chart/index.vue'),
+        name: 'Chart',
+        meta: { title: '图表', icon: 'Histogram', roles: ['admin', 'editor'] }
       },
       {
-        path: '/xueyue',
-        component: () => import('@/views/xueyue/index.vue'),
-        name: 'Xueyue',
-        meta: { title: '雪月', icon: 'el-icon-s-flag', roles: ['admin'] }
+        path: '/test-page',
+        component: () => import('@/views/test-page/index.vue'),
+        name: 'TestPage',
+        meta: { title: '测试', icon: 'Flag', roles: ['admin'] }
       }
     ]
   }

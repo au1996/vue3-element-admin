@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 // Vite supports importing multiple modules from the file system using the special import.meta.glob function
 // see https://cn.vitejs.dev/guide/features.html#glob-import
-const modulesFiles = import.meta.globEager('./modules/*.js')
+const modulesFiles = import.meta.glob('./modules/*.js', { eager: true })
 const pathList = []
 
 for (const path in modulesFiles) {

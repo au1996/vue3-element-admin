@@ -1,7 +1,9 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
-    <Hamburger class="hamburger-container" :is-active="opened" @toggleClick="toggleSideBar" />
-    <Breadcrumb class="breadcrumb-container" />
+    <div class="left-box">
+      <Hamburger class="hamburger-container" :is-active="opened" @toggleClick="toggleSideBar" />
+      <Breadcrumb class="breadcrumb-container" />
+    </div>
     <div class="right-menu">
       <el-tooltip effect="dark" content="全屏" placement="bottom">
         <Screenfull class="screenfull" />
@@ -14,7 +16,6 @@
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="$router.push('/')">首页</el-dropdown-item>
-            <el-dropdown-item divided @click="editPossword">修改密码</el-dropdown-item>
             <el-dropdown-item divided @click="loginOut">登出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -41,10 +42,6 @@ const toggleSideBar = () => {
   store.dispatch('app/toggleSideBar')
 }
 
-const editPossword = () => {
-  ElMessage.warning('请联系管理员')
-}
-
 const loginOut = () => {
   ElMessageBox.confirm('退出登录', '提示', {
     confirmButtonText: '确认',
@@ -63,7 +60,8 @@ const loginOut = () => {
 <style lang="scss" scoped>
 .navbar {
   height: 50px;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
   line-height: 50px;
 
   .hamburger-container {
@@ -72,19 +70,13 @@ const loginOut = () => {
     padding: 0 10px;
   }
 
-  .breadcrumb-container {
-    float: left;
-  }
 
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
-  }
+
+
 
   :deep(.right-menu) {
     display: flex;
     align-items: center;
-    float: right;
     height: 100%;
 
     &:focus {

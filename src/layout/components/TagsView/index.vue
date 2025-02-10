@@ -11,7 +11,12 @@
         @contextmenu.prevent="openMenu(tag, $event)"
       >
         {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        <Icon
+          v-if="!isAffix(tag)"
+          name="Close"
+          :size="10"
+          @click.prevent.stop="closeSelectedTag(tag)"
+        />
       </router-link>
     </ScrollPane>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
@@ -258,14 +263,12 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-//reset element css of el-icon-close
 .tags-view-wrapper {
   .tags-view-item {
-    .el-icon-close {
+    .el-icon {
       width: 16px;
       height: 16px;
       text-align: center;
-      vertical-align: 2px;
       border-radius: 50%;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
