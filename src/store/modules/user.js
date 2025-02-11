@@ -1,6 +1,15 @@
 import { ElMessage } from 'element-plus'
 import { user_login, user_logout } from '@/api/user'
-import { getToken, setToken, getRoles, setRoles, getName, setName, getAvatar, setAvatar } from '@/utils/auth'
+import {
+  getToken,
+  setToken,
+  getRoles,
+  setRoles,
+  getName,
+  setName,
+  getAvatar,
+  setAvatar
+} from '@/utils/auth'
 
 const state = {
   token: getToken(),
@@ -33,54 +42,33 @@ const mutations = {
 }
 
 const actions = {
-  // user login
-  login({ commit }, userInfo) {
-    return new Promise((resolve, reject) => {
-      user_login(userInfo)
-        .then((res) => {
-          console.log(11, res)
-          if (res.token) {
-            commit('SET_TOKEN', res.token)
-            commit('SET_ROLES', res.role)
-            commit('SET_NAME', res.username)
-            commit('SET_AVATAR', res.avatar)
-            commit('SET_INTRODUCTION', res.introduction)
-            ElMessage({
-              type: 'success',
-              message: res.message
-            })
-          } else {
-            ElMessage({
-              type: 'error',
-              message: res.message
-            })
-          }
-          resolve(res)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    })
+  async login({ commit }, userInfo) {
+    const [err, res] = await user_login(userInfo)
+    if (err) return
+    if (res.token) {
+      commit('SET_TOKEN', res.token)
+      commit('SET_ROLES', res.role)
+      commit('SET_NAME', res.username)
+      commit('SET_AVATAR', res.avatar)
+      commit('SET_INTRODUCTION', res.introduction)
+      ElMessage.success(res.message)
+      return res
+    } else {
+      ElMessage.error(res.message)
+      return false
+    }
   },
+  async logout({ commit, state, dispatch }) {
+    const [err, res] = await user_logout(state.token)
+    if (err) return
 
-  // user logout
-  logout({ commit, state, dispatch }) {
-    return new Promise((resolve, reject) => {
-      user_logout(state.token)
-        .then((res) => {
-          commit('SET_TOKEN', '')
-          commit('SET_ROLES', '')
-          commit('SET_NAME', '')
-          commit('SET_AVATAR', '')
-          dispatch('tagsView/delAllViews', null, { root: true })
-
-          resolve(res)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    })
-  },
+    commit('SET_TOKEN', '')
+    commit('SET_ROLES', '')
+    commit('SET_NAME', '')
+    commit('SET_AVATAR', '')
+    dispatch('tagsView/delAllViews', null, { root: true })
+    return res
+  }
 }
 
 export default {
