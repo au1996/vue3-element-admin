@@ -1,0 +1,1 @@
+import{_ as s}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{h as o,i as t,j as c,am as a,an as _}from"./vue-DMw5Nt_d.js";const d={},n=e=>(a("data-v-5262a051"),e=e(),_(),e),r={class:"xueyueView"},i=n(()=>c("h1",{class:"title"},"测试 scss变量",-1)),p=[i];function u(e,h){return t(),o("div",r,p)}const m=s(d,[["render",u],["__scopeId","data-v-5262a051"]]);export{m as default};
