@@ -1,10 +1,10 @@
 # vue3-element-admin
 
-🎉 基于 Vite 2.0 + Vue3.0 + Vue-Router 4.0 + Vuex 4.0 + element-plus 的后台管理系统
+🎉 基于 Vite 5.x + Vue3.x + Vue-Router 4.x + Vuex 4.0 + element-plus 的后台管理系统
 
 ## 简介
 
-[vue3-element-admin](https://au1996.github.io/vue3-element-admin) 是一个后台前端解决方案，它基于 [vue3](https://v3.cn.vuejs.org/guide/migration/introduction.html) 和 [element-plus](https://element-plus.gitee.io/#/zh-CN)实现。使用了最新的前端技术栈 [vite](https://cn.vitejs.dev/)，提供最基础的框架模型，可以帮助你快速搭建中后台产品原型。PS：我是参考 [@PanJiaChen](https://github.com/PanJiaChen) 开发维护的 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)， 十分感谢大佬对开源社区做出的贡献 :)
+[vue3-element-admin](https://au1996.github.io/vue3-element-admin) 是一个`简约版`后台系统解决方案，它基于 [vue3](https://v3.cn.vuejs.org/guide/migration/introduction.html) 和 [element-plus](https://element-plus.gitee.io/#/zh-CN)实现。使用了最新的前端技术栈 [vite](https://cn.vitejs.dev/)，提供最基础的框架模型，可以帮助你快速搭建中后台产品原型。PS：我是参考 [@PanJiaChen](https://github.com/PanJiaChen) 开发维护的 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)， 十分感谢大佬对开源社区做出的贡献 :)
 
 - [在线预览](https://au1996.github.io/vue3-element-admin)
 
@@ -25,7 +25,7 @@ cd vue3-element-admin
 npm install
 
 # 建议修改为 taobao 源解决下载速度慢的问题
-npm config set registry https://registry.npm.taobao.org/
+npm config set registry https://registry.npmmirror.com
 
 # 启动服务
 npm run dev
