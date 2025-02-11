@@ -48,7 +48,7 @@ const userMockList = [
       })
       if (~flag) {
         const data = {
-          code: 20000,
+          code: 0,
           message: '登录成功',
           token: new Date().getTime().toString(32),
           ...userList[flag]
@@ -56,7 +56,7 @@ const userMockList = [
         return data
       } else {
         return {
-          code: 40000,
+          code: 400,
           message: '用户名或密码错误'
         }
       }
@@ -67,7 +67,7 @@ const userMockList = [
     method: 'get',
     response: ({ query }) => {
       return {
-        code: 20000,
+        code: 0,
         message: 'success',
         data: query
       }
@@ -75,14 +75,22 @@ const userMockList = [
   },
   {
     url: '/api/users',
-    method: 'get',
+    method: 'post',
     timeout: 500,
-    response: () => {
-      const list = userList
+    response: ({ body }) => {
+      const str = body.keyword
+      const page = body.page
+      const pageSize = body.page_size
+      let result = userList
+      if (str) {
+        result = userList.filter((row) => row.username.includes(str) || row.email.includes(str))
+      }
+
       return {
-        code: 20000,
+        code: 0,
         message: 'success',
-        list
+        total: result.length,
+        data: result.slice((page - 1) * pageSize, page * pageSize)
       }
     }
   },
@@ -90,11 +98,11 @@ const userMockList = [
     url: '/api/roles',
     method: 'get',
     response: () => {
-      const list = roleList
       return {
-        code: 20000,
+        code: 0,
         message: 'success',
-        list
+        data: roleList,
+        total: roleList.length
       }
     }
   }

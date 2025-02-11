@@ -1,9 +1,22 @@
 <template>
   <div class="user-manage-view">
     <div class="header-box">
-      <el-button type="primary" @click="showDialog">添加用户</el-button>
+      <el-input
+        v-model="tableParams.keyword"
+        class="left"
+        placeholder="请输入关键词搜索"
+        clearable
+        @change="onSearch"
+      >
+        <template #append>
+          <el-button @click="onSearch">
+            <Icon name="Search" />
+          </el-button>
+        </template>
+      </el-input>
+      <el-button type="primary" @click="showDialog('add')">添加用户</el-button>
     </div>
-    <el-table v-loading="tabelLoading" border :data="tableList">
+    <el-table v-loading="tableLoading" border :data="tableData">
       <el-table-column prop="username" label="账号" />
       <el-table-column prop="password" label="密码" />
       <el-table-column prop="role" label="角色">
@@ -25,12 +38,28 @@
       </el-table-column>
       <el-table-column label="操作" width="200">
         <template #default="{ row }">
-          <el-button type="primary" size="small" @click="showDialog(2, row)">修改</el-button>
+          <el-button type="primary" size="small" @click="showDialog(TYPE_UPDATE, row)"
+            >修改</el-button
+          >
           <el-button type="danger" size="small" @click="deleteUser(row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog v-model="dialogVisible" :title="dialogFlag === 2 ? '修改' : '添加'">
+    <el-pagination
+      v-model:current-page="pagination.page"
+      v-model:page-size="pagination.pageSize"
+      :total="pagination.total"
+      :page-sizes="[2, 5, 10, 20]"
+      layout="total, slot, prev, pager, next, sizes, jumper"
+      class="default"
+      @current-change="pagination.pageChange"
+      @size-change="pagination.sizeChange"
+    >
+    </el-pagination>
+    <el-dialog
+      v-model="dialogState.visible"
+      :title="dialogState.type === TYPE_UPDATE ? '修改' : '添加'"
+    >
       <el-form ref="userFormRef" v-loading="formLoading" :model="userForm" label-width="80px">
         <el-form-item prop="username" label="账号">
           <el-input v-model="userForm.username"></el-input>
@@ -57,7 +86,7 @@
       </el-form>
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button @click="dialogState.visible = false">取 消</el-button>
           <el-button type="primary" :disabled="formLoading" @click="addOrUpdateUser"
             >确 定</el-button
           >
@@ -68,18 +97,70 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, onBeforeMount } from 'vue'
+import { ref, reactive } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
-import { get_user_list, add_user, get_roles, update_user_info, delete_user_info } from '@/api/user'
+import useTableData from '@/hooks/useTableData'
+import { get_user_list, get_roles } from '@/api/user'
 import { DateFormat } from '@/utils/util'
 
-const dialogFlag = ref(1)
-const dialogVisible = ref(false)
-const tabelLoading = ref(false)
+const tableParams = reactive({
+  keyword: ''
+})
+
+const getTableParams = () => {
+  return tableParams
+}
+
+const setTableData = (resData, tableData) => {
+  const [err, res] = resData
+  if (err) return
+  pagination.total = res.total
+  tableData.value = res.data
+}
+
+const { tableLoading, tableData, pagination, getTableData } = useTableData({
+  getTableParams,
+  setTableData,
+  request: get_user_list,
+  pageSize: 2
+})
+
+const onSearch = () => {
+  getTableData(1)
+}
+
+/**
+ * 获取角色列表
+ */
+const roleList = ref([])
+const getRoles = async () => {
+  const [err, res] = await get_roles()
+  if (err) return
+  roleList.value = res.data
+}
+getRoles()
+
+/**
+ * 获取角色名
+ */
+const getRoleName = (id) => {
+  let name = id
+  roleList.value.forEach((group) => {
+    if (group.id === id) {
+      name = group.name
+    }
+  })
+  return name
+}
+
+const TYPE_ADD = 'add'
+const TYPE_UPDATE = 'update'
+const dialogState = reactive({
+  type: TYPE_ADD,
+  visible: false
+})
 const formLoading = ref(false)
 const userFormRef = ref(null)
-const roleList = reactive([])
-const tableList = reactive([])
 const userForm = reactive({
   username: '',
   password: '',
@@ -88,56 +169,15 @@ const userForm = reactive({
   introduction: ''
 })
 
-onBeforeMount(() => {
-  getTableList()
-  getRoles()
-})
-
-/**
- * 获取表格列表
- */
-const getTableList = () => {
-  tabelLoading.value = true
-  get_user_list()
-    .then((res) => {
-      tableList.length = 0
-      tableList.push(...res.list)
-    })
-    .finally(() => {
-      tabelLoading.value = false
-    })
-}
-
-/**
- * 获取角色列表
- */
-const getRoles = () => {
-  if (roleList.length) return
-  get_roles().then((res) => {
-    roleList.push(...res.list)
-  })
-}
-
-/**
- * 获取角色名
- */
-const getRoleName = (id) => {
-  let name = id
-  roleList.forEach((group) => {
-    if (group.id === id) {
-      name = group.name
-    }
-  })
-  return name
-}
-
 /**
  * 展开弹窗
+ * @param {String} type add | update
+ * @param {Object} row
  */
-const showDialog = (flag, row) => {
-  dialogVisible.value = true
-  dialogFlag.value = flag
-  if (flag === 2) {
+const showDialog = (type, row) => {
+  dialogState.type = type
+  dialogState.visible = true
+  if (dialogState.type === TYPE_UPDATE) {
     for (const key in row) {
       userForm[key] = row[key]
     }
@@ -153,25 +193,13 @@ const showDialog = (flag, row) => {
  */
 const addOrUpdateUser = () => {
   formLoading.value = true
-  if (dialogFlag.value === 2) {
-    update_user_info({ ...userForm })
-      .then(() => {
-        getTableList()
-        dialogVisible.value = false
-      })
-      .finally(() => {
-        formLoading.value = false
-      })
-  } else {
-    add_user({ ...userForm })
-      .then(() => {
-        getTableList()
-        dialogVisible.value = false
-      })
-      .finally(() => {
-        formLoading.value = false
-      })
+  if (dialogState.type === TYPE_ADD) {
+    tableData.value.push(userForm)
   }
+  setTimeout(() => {
+    formLoading.value = false
+    dialogState.visible = false
+  }, 800)
 }
 
 /**
@@ -184,13 +212,9 @@ const deleteUser = (row) => {
     type: 'warning'
   })
     .then(() => {
-      delete_user_info(row.username).then(() => {
-        const index = tableList.findIndex((o) => o.username === row.username)
-        tableList.splice(index, 1)
-        ElMessage({
-          type: 'success',
-          message: '删除成功'
-        })
+      ElMessage({
+        type: 'warning',
+        message: '暂无权限删除'
       })
     })
     .catch(() => {})
@@ -199,6 +223,12 @@ const deleteUser = (row) => {
 
 <style lang="scss" scoped>
 .header-box {
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .left {
+    width: 300px;
+  }
 }
 </style>

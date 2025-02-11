@@ -1,5 +1,5 @@
 import { ElMessage } from 'element-plus'
-import { user_login, user_logout, get_user_info } from '@/api/user'
+import { user_login, user_logout } from '@/api/user'
 import { getToken, setToken, getRoles, setRoles, getName, setName, getAvatar, setAvatar } from '@/utils/auth'
 
 const state = {
@@ -81,34 +81,6 @@ const actions = {
         })
     })
   },
-
-  // get user info
-  getInfo({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      get_user_info(state.token)
-        .then((res) => {
-          if (!res) {
-            reject('Verification failed, please Login again.')
-          }
-
-          const { roles, name, avatar, introduction } = res
-
-          // roles must be a non-empty array
-          if (!roles || roles.length <= 0) {
-            reject('getInfo: roles must be a non-null array!')
-          }
-
-          commit('SET_NAME', name)
-          commit('SET_ROLES', roles)
-          commit('SET_AVATAR', avatar)
-          commit('SET_INTRODUCTION', introduction)
-          resolve(res)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    })
-  }
 }
 
 export default {

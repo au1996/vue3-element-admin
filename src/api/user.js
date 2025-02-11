@@ -1,4 +1,4 @@
-import request from './Axios'
+import { request } from './Axios'
 
 /**
  * 登录
@@ -27,65 +27,15 @@ export function user_logout(params) {
 }
 
 /**
- * 添加用户
- * @param {*} data
- * @returns
- */
-export function add_user(data) {
-  return request({
-    url: '/api/user',
-    method: 'post',
-    data
-  })
-}
-
-/**
- * 获取用户信息
- * @param {*} id
- * @returns
- */
-export function get_user_info(id) {
-  return request({
-    url: `/api/user/${id}`,
-    method: 'get'
-  })
-}
-
-/**
- * 修改用户信息
- * @param {*} data
- * @returns
- */
-export function update_user_info(data) {
-  return request({
-    url: `/api/user/${data.id}`,
-    method: 'put',
-    data
-  })
-}
-
-/**
- * 删除用户信息
- * @param {*} id
- * @returns
- */
-export function delete_user_info(id) {
-  return request({
-    url: `/api/user/${id}`,
-    method: 'delete'
-  })
-}
-
-/**
  * 获取用户列表
- * @param {*} params
+ * @param {*} data
  * @returns
  */
-export function get_user_list(params) {
+export function get_user_list(data) {
   return request({
     url: '/api/users',
-    method: 'get',
-    params
+    method: 'post',
+    data
   })
 }
 

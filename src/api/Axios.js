@@ -48,3 +48,11 @@ service.interceptors.response.use(
 )
 
 export default service
+
+export function request(params) {
+  return service(params)
+    .then((res) => [null, res])
+    .catch((err) => {
+      return [err, null]
+    })
+}
