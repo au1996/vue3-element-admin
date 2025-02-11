@@ -5,8 +5,6 @@
   "explorer.confirmDragAndDrop": false,
   "editor.tabSize": 2,
   "editor.rulers": [],
-  // "editor.formatOnSave": true,
-  // "editor.formatOnPaste": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "typescript.updateImportsOnFileMove.enabled": "never",
@@ -15,6 +13,8 @@
   "prettier.singleQuote": true, // 使用带引号替代双引号
   "prettier.printWidth": 120, // 120字符换行
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true, // 让函数(名)和后面的括号之间加个空格
+  // "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
@@ -79,12 +79,6 @@
   },
   "volar.tsPlugin": true,
   "volar.tsPluginStatus": false,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
   "vsicons.dontShowNewVersionMessage": true,
   "liveServer.settings.donotVerifyTags": true,
   "workbench.colorCustomizations": {}

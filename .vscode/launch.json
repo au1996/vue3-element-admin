@@ -8,7 +8,7 @@
       "name": "NodeJs Debug",
       "console": "integratedTerminal",
       "sourceMaps": true,
-      "trace": "all",
+      "trace": true,
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]
