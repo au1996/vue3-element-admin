@@ -1,0 +1,1 @@
+import{r as n,h as r,j as s,M as l,L as c,G as u,a7 as i,i as e,E as _,J as p}from"./vue-DMw5Nt_d.js";const h={__name:"index",setup(m){const t=n("菜单");return(d,v)=>{const a=i("router-view");return e(),r("div",null,[s("h1",null,c(t.value),1),l(a,null,{default:u(({Component:o})=>[(e(),_(p(o)))]),_:1})])}}};export{h as default};
