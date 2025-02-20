@@ -1,4 +1,5 @@
 import { createApp, createVNode } from 'vue'
+import { createPinia } from 'pinia'
 
 import ElementPlus, { ElIcon } from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -9,16 +10,17 @@ import './styles/index.scss'
 
 import App from './App.vue'
 import router from './router'
-import store from './store'
-import Directives from './directive'
+import Directive from './directive'
 
-import './permission' // permission control
+import './permission'
 
 const app = createApp(App)
-app.use(ElementPlus)
-app.use(Directives)
+const pinia = createPinia()
+
 app.use(router)
-app.use(store)
+app.use(pinia)
+app.use(Directive)
+app.use(ElementPlus)
 app.mount('#app')
 
 const Icon = (props) => {

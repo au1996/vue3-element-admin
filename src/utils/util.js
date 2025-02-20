@@ -1,4 +1,14 @@
-const getQueryStringByName = function (name) {
+import Cookies from 'js-cookie'
+
+export const getCookie = (key) => {
+  return Cookies.get(key) || ''
+}
+
+export const setCookie = (key, val) => {
+  return Cookies.set(key, val)
+}
+
+export const getQueryStringByName = function (name) {
   var result = location.search.match(new RegExp('[?&]' + name + '=([^&]+)', 'i'))
   if (result == null || result.length < 1) {
     return ''
@@ -6,7 +16,7 @@ const getQueryStringByName = function (name) {
   return result[1]
 }
 
-const transformData = function (data) {
+export const transformData = function (data) {
   const params = new FormData()
   for (const item in data) {
     params.append(item, data[item])
@@ -14,7 +24,7 @@ const transformData = function (data) {
   return params
 }
 
-const DateFormat = function (date, fmt) {
+export const DateFormat = function (date, fmt) {
   fmt = fmt || 'yyyy-MM-dd hh:mm:ss'
   if (date === null || typeof date === 'undefined' || date === '') {
     return null
@@ -39,5 +49,3 @@ const DateFormat = function (date, fmt) {
   }
   return fmt
 }
-
-export { getQueryStringByName, transformData, DateFormat }

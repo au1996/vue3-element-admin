@@ -1,11 +1,11 @@
 export default {
   mounted(el, binding) {
-    const permission = binding.value // 获取到 v-permission的值
-    if (permission) {
-      const hasPermission = checkArray(permission)
+    const val = binding.value // 获取到 v-permission的值
+    if (val) {
+      const hasPermission = checkArray(val)
       if (!hasPermission) {
         // 没有权限 移除Dom元素
-        el.parentNode && el.parentNode.removeChild(el)
+        el.parentNode?.removeChild(el)
       }
     }
   }

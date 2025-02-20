@@ -9,6 +9,8 @@ export function getToken() {
   return Cookies.get(TokenKey)
 }
 
+console.log(123, Cookies.get('safja'))
+
 export function setToken(token) {
   return Cookies.set(TokenKey, token)
 }

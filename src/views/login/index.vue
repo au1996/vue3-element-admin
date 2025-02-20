@@ -11,7 +11,12 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="param.password" placeholder="密码" :type="passwordType" @keyup.enter="submitForm">
+          <el-input
+            v-model="param.password"
+            placeholder="密码"
+            :type="passwordType"
+            @keyup.enter="submitForm"
+          >
             <template #prepend>
               <Icon v-if="passwordLock" name="Lock" size="14" @click="switchPass" />
               <Icon v-else name="Unlock" size="14" @click="switchPass" />
@@ -31,11 +36,8 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
-
-const router = useRouter()
-const store = useStore()
+import { useUserStore } from '@/store/user'
 
 const btnLoading = ref(false)
 const loginFormRef = ref(null)
@@ -61,21 +63,22 @@ const switchPass = () => {
   passwordLock.value = !passwordLock.value
 }
 
+const router = useRouter()
+const userStore = useUserStore()
 const submitForm = async () => {
-  loginFormRef.value.validate((valid) => {
-    if (valid) {
-      btnLoading.value = true
-      // 访问登录接口
-      store
-        .dispatch('user/login', param)
-        .then(() => {
-          router.push('/')
-        })
-        .finally(() => {
-          btnLoading.value = false
-        })
-    } else {
+  loginFormRef.value.validate(async (valid) => {
+    if (!valid) {
       ElMessage.error('请输入用户名和密码')
+      return
+    }
+
+    btnLoading.value = true
+    const res = await userStore.login(param)
+    btnLoading.value = false
+
+    if (res) {
+      ElMessage.success('登录成功')
+      router.push('/')
     }
   })
 }

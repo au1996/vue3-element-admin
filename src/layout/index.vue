@@ -18,18 +18,19 @@
 <script setup>
 import { ref, computed, watch, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store/app'
 import Sidebar from './components/Sidebar/index.vue'
 import Navbar from './components/Navbar/index.vue'
 import TagsView from './components/TagsView/index.vue'
 import AppMain from './components/AppMain.vue'
 
 const route = useRoute()
-const store = useStore()
+const appStore = useAppStore()
+const device = computed(() => appStore.state.device)
+const sidebar = computed(() => appStore.state.sidebar)
+const opened = computed(() => sidebar.value.opened)
+const withoutAnimation = computed(() => sidebar.value.withoutAnimation)
 
-const opened = computed(() => store.state.app.sidebar.opened)
-const withoutAnimation = computed(() => store.state.app.sidebar.withoutAnimation)
-const device = computed(() => store.state.app.device)
 const classObj = computed(() => {
   return {
     hideSidebar: !opened.value,
@@ -41,7 +42,7 @@ const classObj = computed(() => {
 
 watch(route, () => {
   if (device.value === 'mobile' && opened.value) {
-    store.dispatch('app/closeSideBar', { withoutAnimation: false })
+    appStore.closeSideBar(false)
   }
 })
 
@@ -52,8 +53,8 @@ onBeforeMount(() => {
 onMounted(() => {
   const isMob = isMobile()
   if (isMob) {
-    store.dispatch('app/toggleDevice', 'mobile')
-    store.dispatch('app/closeSideBar', { withoutAnimation: true })
+    appStore.toggleDevice('mobile')
+    appStore.closeSideBar(true)
   }
 })
 
@@ -62,7 +63,7 @@ onBeforeUnmount(() => {
 })
 
 const handleClickOutside = () => {
-  store.dispatch('app/closeSideBar', { withoutAnimation: false })
+  appStore.closeSideBar(false)
 }
 
 const mobileWidth = ref(992)
@@ -75,10 +76,9 @@ const isMobile = () => {
 const resizeHandler = () => {
   if (!document.hidden) {
     const isMob = isMobile()
-    store.dispatch('app/toggleDevice', isMob ? 'mobile' : 'desktop')
-
+    appStore.toggleDevice(isMob ? 'mobile' : 'desktop')
     if (isMob) {
-      store.dispatch('app/closeSideBar', { withoutAnimation: true })
+      appStore.closeSideBar(true)
     }
   }
 }

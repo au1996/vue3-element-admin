@@ -25,23 +25,18 @@
 
 <script setup>
 import { reactive, computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store/app'
 import { constantRoutes } from '@/router'
 import { getRoles } from '@/utils/auth'
-import SidebarItem from './SidebarItem.vue'
 import logoSrc from '@img/logo.png'
+import SidebarItem from './SidebarItem.vue'
 
-const roles = getRoles()
-const store = useStore()
-const routerList = reactive([])
-
-const opened = computed(() => store.state.app.sidebar.opened)
+const appStore = useAppStore()
+const opened = computed(() => appStore.state.sidebar.opened)
 const isCollapse = computed(() => !opened.value)
 
-onMounted(() => {
-  filterRoutes()
-})
-
+const routerList = reactive([])
+const roles = getRoles()
 /**
  * 权限过滤路由
  */
@@ -52,7 +47,11 @@ const filterRoutes = () => {
     }
   })
   for (let i = 0; i < routerList.length; i++) {
-    if (routerList[i].meta && routerList[i].meta.roles && !routerList[i].meta.roles.includes(roles)) {
+    if (
+      routerList[i].meta &&
+      routerList[i].meta.roles &&
+      !routerList[i].meta.roles.includes(roles)
+    ) {
       routerList.splice(i, 1)
       i--
     }
@@ -66,7 +65,10 @@ const filterRoutes = () => {
 const filterChildrens = (routers) => {
   const childrens = []
   routers.forEach((item) => {
-    if ((item.meta && !item.meta.roles) || (item.meta && item.meta.roles && item.meta.roles.includes(roles))) {
+    if (
+      (item.meta && !item.meta.roles) ||
+      (item.meta && item.meta.roles && item.meta.roles.includes(roles))
+    ) {
       childrens.push(item)
       if (item.children) {
         filterChildrens(item.children)
@@ -76,6 +78,10 @@ const filterChildrens = (routers) => {
   routers.length = 0
   routers.push(...childrens)
 }
+
+onMounted(() => {
+  filterRoutes()
+})
 </script>
 
 <style lang="scss" scoped="scoped">

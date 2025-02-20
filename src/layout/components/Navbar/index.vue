@@ -10,7 +10,7 @@
       </el-tooltip>
       <el-dropdown class="avatar-container right-menu-item">
         <div class="avatar-wrapper">
-          <img :src="avatar ? avatar : '/img/logo.png'" class="user-avatar" />
+          <img :src="userInfo.avatar ? userInfo.avatar : './img/logo.png'" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <template #dropdown>
@@ -27,19 +27,25 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
+import { useAppStore } from '@/store/app'
+import { useUserStore } from '@/store/user'
+import { useTagsViewStore } from '@/store/tagsView'
 import Hamburger from './Hamburger.vue'
 import Breadcrumb from './Breadcrumb.vue'
 import Screenfull from './Screenfull.vue'
 
 const router = useRouter()
-const store = useStore()
-const opened = computed(() => store.state.app.sidebar.opened)
-const avatar = computed(() => store.state.user.avatar)
+const appStore = useAppStore()
+const opened = computed(() => appStore.state.sidebar.opened)
+
+const userStore = useUserStore()
+const userInfo = computed(() => userStore.userInfo)
+
+const tagsViewStore = useTagsViewStore()
 
 const toggleSideBar = () => {
-  store.dispatch('app/toggleSideBar')
+  appStore.toggleSideBar()
 }
 
 const loginOut = () => {
@@ -48,10 +54,12 @@ const loginOut = () => {
     cancelButtonText: '取消',
     type: 'warning'
   })
-    .then(() => {
-      store.dispatch('user/logout').then(() => {
+    .then(async () => {
+      const res = await userStore.logout()
+      if (res) {
         router.push('/login')
-      })
+        tagsViewStore.delAllViews()
+      }
     })
     .catch(() => {})
 }
@@ -69,10 +77,6 @@ const loginOut = () => {
     height: 50px;
     padding: 0 10px;
   }
-
-
-
-
 
   :deep(.right-menu) {
     display: flex;

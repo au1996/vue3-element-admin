@@ -1,6 +1,6 @@
 <template>
   <div class="errPage-container">
-    <el-button icon="el-icon-arrow-left" class="pan-back-btn" @click="back"> 返回 </el-button>
+    <el-button class="pan-back-btn" @click="back"> 返回 </el-button>
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">Oops!</h1>
@@ -15,27 +15,20 @@
           <li class="link-type">
             <a href="https://github.com/au1996" target="brank">随便看看</a>
           </li>
-          <li><a href="#" @click.prevent="dialogVisible = true">点我看图</a></li>
         </ul>
       </el-col>
       <el-col :span="12">
         <img src="/img/401.gif" width="313" height="428" alt="Girl has dropped her ice cream." />
       </el-col>
     </el-row>
-    <el-dialog v-model="dialogVisible" title="随便看">
-      <img :src="ewizardClap" class="pan-img" />
-    </el-dialog>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
-const ewizardClap = 'https://au1996.github.io/blog/images/logo.png'
-const dialogVisible = ref(false)
 
 const back = () => {
   if (route.query.noGoBack) {

@@ -34,7 +34,10 @@ router.beforeEach(async (to, from, next) => {
       if (routes.length) {
         // Permission filtering
         const toRoute = routes[0]
-        if ((toRoute.meta && !toRoute.meta.roles) || (toRoute.meta && toRoute.meta.roles.includes(roles))) {
+        if (
+          (toRoute.meta && !toRoute.meta.roles) ||
+          (toRoute.meta && toRoute.meta.roles.includes(roles))
+        ) {
           next()
         } else {
           next('/401')
@@ -50,7 +53,7 @@ router.beforeEach(async (to, from, next) => {
       // in the free login whitelist, go directly
       next()
     } else {
-      // other pages that do not have permission to access are redirected to the login page.
+      // other pages redirected to the login page.
       next('/login')
       done()
     }
